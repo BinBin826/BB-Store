@@ -1,0 +1,70 @@
+
+        *{
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fff;
+            color: #222;
+        }
+
+        h3 {
+            text-align: center;
+            margin-top: 120px;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .profile-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto 100px;
+            background: #f9f9f9;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-info label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .profile-info input, .profile-info textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            margin-bottom: 18px;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .profile-info input:focus, .profile-info textarea:focus {
+            border-color: #000;
+        }
+
+        .save-btn {
+            padding: 12px 24px;
+            border: none;
+            background: #000;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .save-btn:hover {
+            background: #333;
+        }
+
+        .box-second-footer {
+            margin-top: 60px;
+        }
