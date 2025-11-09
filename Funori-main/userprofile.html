@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font tiếng Việt đẹp, đồng bộ với giao diện -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <link rel="stylesheet" href="Css/main.css">
+    <link rel="stylesheet" href="Css/main-moblie.css">
+    <link rel="stylesheet" href="Css/profile.css">
+    <title>Profile</title>
+   
+</head>
+
+<body>
+    <div class="header">
+        <div class="content">
+            <div class="box-menu-mobile">
+                <button>
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <nav class="box-menu">
+                <ul class="all-list-menu">
+                    <li>
+                        <a href="user.html" class="hover-a">Home</a>
+                        <!-- <a href="">
+                            <i class="fa-solid fa-angle-down angle-down"></i>
+                        </a> -->
+                    </li>
+                    <li class="padding-list-menu">
+                        <a href="Shop.html" class="hover-a">Shop</a>
+                        <!-- <a href="">
+                            <i class="fa-solid fa-angle-down angle-down"></i>
+                        </a> -->
+                    </li>
+                    <li class="padding-list-menu">
+                        <a href="about.html" class="hover-a">About Us</a>
+                        <!-- <a href="">
+                            <i class="fa-solid fa-angle-down angle-down"></i>
+                        </a> -->
+                    </li>
+    
+                </ul>
+            </nav>
+            <div class="box-logo">
+                <div class="logo">
+                    <a href="user.html">
+                        <img src="Picture/logo.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="box-icon">
+                <div class="box-search">
+                <input type="text" id="search-input" placeholder="Search here...">
+                <button id="search-btn"></button>
+            </div>
+
+                <a href="search.html" class="box-search">
+                    <i class="fa-solid fa-magnifying-glass search"></i>
+                </a>
+                <a href="index.html" class="box-user">
+                    <i class="fa-regular fa-user user"></i>
+                </a>
+                <a href="userprofile.html">TEAM 9</a>
+                <a href="cart.html" class="box-cart">
+                    <i class="fa-solid fa-cart-shopping cart"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Nội dung quản lý thông tin -->
+<h3>THÔNG TIN NGƯỜI DÙNG</h3>
+<div class="profile-container">
+    <div class="profile-info">
+        <label>Họ và tên</label>
+        <input type="text" placeholder="Nhập họ tên..." id="fullname">
+
+        <label>Email</label>
+        <input type="email" placeholder="Nhập email..." id="email">
+
+        <label>Số điện thoại</label>
+        <input type="text" placeholder="Nhập số điện thoại..." id="phone">
+
+        <label>Địa chỉ</label>
+        <textarea placeholder="Nhập địa chỉ..." id="address"></textarea>
+
+        <h3>Đổi mật khẩu</h3>
+        <label>Mật khẩu hiện tại</label>
+        <input type="password" placeholder="Nhập mật khẩu hiện tại" id="password">
+        <label>Mật khẩu mới</label>
+        <input type="password" placeholder="Nhập mật khẩu mới" id="password">
+
+  <a href="user.html" 
+     style="display:inline-block; background-color:#555; color:white; 
+            padding:12px 28px; border-radius:6px; font-weight:500; 
+            text-decoration:none; transition:0.3s;">
+     Lưu thay đổi
+  </a>
+</div>
+
+    </div>
+</div>
+    <!-- Nút lịch sử mua hàng -->
+<div style="text-align:center; margin-top:40px;">
+  <a href="history.html" 
+     style="display:inline-block; background-color:#555; color:white; 
+            padding:12px 28px; border-radius:6px; font-weight:500; 
+            text-decoration:none; transition:0.3s;">
+     Lịch Sử Mua Hàng
+  </a>
+</div>
+
+<!-- Giữ nguyên footer -->
+<div class="box-second-footer" style="margin-top: 50px;">
+    <div class="first-box">
+        <div class="title">
+            Copyright © 2022. All Right Reserved
+        </div>
+    </div>
+    <div class="second-box">
+        <div class="box-bank">
+            <img src="Picture/payments-1.png" alt="">
+        </div>
+    </div>
+</div>
+<script>
+  // Giả sử thông tin người dùng có sẵn:
+  const userData = {
+    fullname: "Nguyễn Thanh Tuấn",
+    email: "nthanhtuan0802@gmail.com",
+    phone: "0901234567",
+    address: "221B Baker Street, Quận 5, TP.HCM"
+  };
+
+  // Gán dữ liệu vào các ô nhập
+  document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("fullname").value = userData.fullname;
+    document.getElementById("email").value = userData.email;
+    document.getElementById("phone").value = userData.phone;
+    document.getElementById("address").value = userData.address;
+  });
+</script>
+
+</body>
+</html>
