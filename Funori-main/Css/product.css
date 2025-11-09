@@ -1,0 +1,125 @@
+.new-product-1 {
+  width: 250px;
+  text-align: center;
+  position: relative;
+  margin: 20px;
+  overflow: visible; /* để nút không bị che */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Ảnh sản phẩm */
+.pic-product-1 {
+  position: relative;
+  overflow: hidden;
+  height: 250px; /* chiều cao cố định */
+}
+
+.pic-product-1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ảnh không méo */
+  transition: all 0.4s ease;
+}
+
+/* Khối chứa icon */
+.box-icon-new-product {
+  position: absolute;
+  bottom: 15px; /* 👈 xích xún như cũ */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+/* Từng icon */
+.box-icon-new-product .icon {
+  background-color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+/* Hover icon */
+.box-icon-new-product .icon:hover {
+  background-color: #fcad02;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Vị trí bắt đầu (ẩn và trượt) */
+.box-icon-new-product .icon.cart,
+.box-icon-new-product .icon.search {
+  transform: translateY(20px);
+}
+
+.box-icon-new-product .icon.heart {
+  transform: translateY(-20px);
+}
+
+/* Khi hover ảnh thì hiện icon */
+.pic-product-1:hover .box-icon-new-product .icon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hiệu ứng ảnh phóng nhẹ khi hover */
+.pic-product-1:hover img {
+  transform: scale(1.05);
+}
+
+/* Sao, tên, giá */
+.box-star {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #c9c9c9;
+}
+
+.box-star span {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.title-new-product a {
+  display: block;
+  margin-top: 5px;
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.title-new-product a:hover {
+  color: #fcad02;
+}
+
+.price {
+  font-size: 16px;
+  color: rgb(170, 167, 167);
+  margin: 5px 0;
+}
+
+/* Nút Add to cart */
+.buttom-2 {
+  margin-top: 10px;
+}
+
+.buttom-2 button {
+  background-color: #ff9b42;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buttom-2 button:hover {
+  background-color: #fcad02;
+}
