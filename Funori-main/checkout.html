@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh toán - Funori</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+  <link rel="stylesheet" href="Css/main.css">
+  <link rel="stylesheet" href="Css/main-moblie.css">
+  <link rel="stylesheet" href="Css/checkout.css">
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <div class="header">
+    <div class="content">
+      <div class="box-menu-mobile">
+        <button>
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <nav class="box-menu">
+        <ul class="all-list-menu">
+          <li><a href="index.html" class="hover-a">Home</a></li>
+          <li class="padding-list-menu"><a href="Shops.html" class="hover-a">Shop</a></li>
+          <li class="padding-list-menu"><a href="about.html" class="hover-a">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="box-logo">
+        <div class="logo">
+          <a href="index.html">
+            <img src="Picture/logo.png" alt="">
+          </a>
+        </div>
+      </div>
+
+      <div class="box-icon">
+        <div class="box-search">
+          <input type="text" id="search-input" placeholder="Search here...">
+          <button id="search-btn"></button>
+        </div>
+        <a href="search.html" class="box-search"><i class="fa-solid fa-magnifying-glass search"></i></a>
+        <a href="login.html" class="box-user"><i class="fa-regular fa-user user"></i></a>
+        <a href="userprofile.html">TEAM 9</a>
+        <a href="cart.html" class="box-cart"><i class="fa-solid fa-cart-shopping cart"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CHECKOUT BODY ===== -->
+  <section class="checkout-container">
+    <!-- Cột trái: thông tin giao hàng -->
+    <div class="shipping-info">
+      <h2>Thông tin giao hàng</h2>
+      <form>
+        <div class="form-group">
+          <label for="fullname">Họ và tên</label>
+          <input type="text" id="fullname" placeholder="Nhập họ và tên của bạn">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Số điện thoại</label>
+          <input type="text" id="phone" placeholder="Nhập số điện thoại">
+        </div>
+
+        <div class="form-group">
+          <label for="address">Địa chỉ giao hàng</label>
+          <textarea id="address" rows="3" placeholder="Nhập địa chỉ cụ thể"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="note">Ghi chú</label>
+          <textarea id="note" rows="2" placeholder="Ghi chú cho đơn hàng (nếu có)"></textarea>
+        </div>
+
+        <!-- Phương thức thanh toán -->
+        <div class="section">
+          <div class="section-header">
+            <i class="fas fa-money-check-alt"></i>
+            <span>Phương thức thanh toán</span>
+          </div>
+          <div class="payment-method">
+            <label><input type="radio" name="pay" checked> <i class="fa-solid fa-money-bill-wave"></i> Thanh toán khi nhận hàng (COD)</label><br>
+            <label><input type="radio" name="pay"> <i class="fa-brands fa-cc-visa"></i> Thẻ Visa</label><br>
+            <label><input type="radio" name="pay"> <i class="fa-brands fa-paypal"></i> Paypal</label>
+          </div>
+        </div>
+
+        <!-- Mã giảm giá -->
+        <div class="section">
+          <div class="section-header">
+            <i class="fas fa-tag"></i>
+            <span>Mã giảm giá</span>
+          </div>
+          <div class="promo">
+            <input type="text" placeholder="Nhập mã khuyến mãi...">
+            <button type="button" class="apply-btn">Áp dụng</button>
+          </div>
+        </div>
+      </form>
+      <!-- Nút quay lại -->
+      <div class="back-btn-container">
+        <a href="javascript:history.back()" class="back-btn">Quay lại giỏ hàng</a>
+      </div>
+    </div>
+
+    <!-- Cột phải: thông tin đơn hàng -->
+    <div class="order-summary">
+      <h2>Thông tin đơn hàng</h2>
+
+      <div class="order-item">
+        <span>Sofa hiện đại 3 chỗ</span>
+        <span>1 x 4,250,000đ</span>
+      </div>
+
+      <div class="order-item">
+        <span>Tủ gỗ tự nhiên</span>
+        <span>2 x 3,200,000đ</span>
+      </div>
+
+      <hr>
+
+      <div class="order-item">
+        <span>Tạm tính</span>
+        <span>10,650,000đ</span>
+      </div>
+
+      <div class="order-item">
+        <span>Phí vận chuyển</span>
+        <span>Miễn phí</span>
+      </div>
+
+      <div class="order-total">
+        <span>Tổng cộng</span>
+        <span>10,650,000đ</span>
+      </div>
+
+      <button class="checkout-btn" onclick="window.location.href='success.html'">
+  <i class="fas fa-lock"></i> Xác nhận đặt hàng
+</button>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+       <div class="box-first-footer">
+        <div class="contact">
+            <h2>CONTACT US</h2>
+            <div class="in">
+                <div>Add :4 Copley Place, 7th Floor, Boston, MA 6</div>
+                <div>Tell : 866.453.4748</div>
+                <div>HR Fax: 810.222.5439</div>
+                <div>sales@funorifurniture.com</div>
+            </div>
+        </div>
+        <div class="contact">
+            <h2>CATEGOIRES</h2>
+            <div class="in">
+                <a href="">
+                    <div>Furniture</div>
+                </a>
+                <a href="">
+                    <div>Tables</div>
+                </a>
+                <a href="">
+                    <div>Seating</div>
+                </a>
+                <a href="">
+                    <div>Desks & office </div>
+                </a>
+                <a href="">
+                    <div>Storage</div>
+                </a>
+                <a href="">
+                    <div>Bed & Bath</div>
+                </a>
+            </div>
+        </div>
+        <div class="contact">
+            <h2>SERVICES</h2>
+            <div class="in">
+                <a href="">
+                    <div>Sale</div>
+                </a>
+                <a href="">
+                    <div>Quick Ship</div>
+                </a>
+                <a href="">
+                    <div>New Designs</div>
+                </a>
+                <a href="">
+                    <div>Accidental Fabric Protection</div>
+                </a>
+                <a href="">
+                    <div>Furniture Care</div>
+                </a>
+                <a href="">
+                    <div>Gift Cards</div>
+                </a>
+            </div>
+        </div>
+        <div class="contact">
+            <h2>JOIN US</h2>
+            <div class="in">
+                <div style="margin-bottom: 25px;">Enter your email below to be the first to know 
+                    <br>
+                    about new collections and product launches.
+                </div>
+                <div class="box-email">
+                    <input type="text" placeholder="Email adress...">
+                    <button type="submit">
+                        <i class="fa-solid fa-envelope"></i>
+                    </button>
+                </div>
+                <div class="icon-contact">
+                    <ul>
+                        <li>
+                            <a href="">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa-brands fa-dribbble"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa-brands fa-behance"></i>
+                            </a>
+                        </li>                     
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-second-footer">
+        <div class="first-box">
+            <div class="title">
+                Copyright © 2022. All Right Reserved
+            </div>
+        </div>
+        <div class="second-box">
+            <div class="box-bank">
+                <img src="Picture/payments-1.png" alt="">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script src="https://kit.fontawesome.com/eda05fcf5c.js" crossorigin="anonymous"></script>
+<script src="js/main.js"></script>
