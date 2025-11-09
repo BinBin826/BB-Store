@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="Css/main.css">
+    <link rel="stylesheet" href="Css/main-moblie.css">
+    <link rel="stylesheet" href="Css/cart.css">
+    <title>Shop</title>
+</head>
+<body>
+    <div class="header">
+        <div class="content">
+            <div class="box-menu-mobile">
+                <button>
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <nav class="box-menu">
+                <ul class="all-list-menu">
+                    <li>
+                        <a href="index.html" class="hover-a">Home</a>
+                        <!-- <a href="">
+                            <i class="fa-solid fa-angle-down angle-down"></i>
+                        </a> -->
+                    </li>
+                    <li class="padding-list-menu">
+                        <a href="Shop.html" class="hover-a">Shop</a>
+                        <!-- <a href="">
+                            <i class="fa-solid fa-angle-down angle-down"></i>
+                        </a> -->
+                    </li>
+                    <li class="padding-list-menu">
+                        <a href="about.html" class="hover-a">About Us</a>
+                        <!-- <a href="">
+                            <i class="fa-solid fa-angle-down angle-down"></i>
+                        </a> -->
+                    </li>
+                   
+                </ul>
+            </nav>
+            <div class="box-logo">
+                <div class="logo">
+                    <a href="user.html">
+                        <img src="Picture/logo.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="box-icon">
+                <div class="box-search">
+                <input type="text" id="search-input" placeholder="Search here...">
+                <button id="search-btn"></button>
+                </div>
+                <a href="search.html" class="box-search">
+                    <i class="fa-solid fa-magnifying-glass search"></i>
+                </a>
+                <a href="login.html" class="box-user">
+                    <i class="fa-regular fa-user user"></i>
+                </a>
+                <a href="userprofile.html" class="box-team">TEAM 9</a>
+
+                <a href="cart.html" class="box-cart">
+                    <i class="fa-solid fa-cart-shopping cart"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+<body>
+
+ <!-- Cart Section -->
+  <div class="container my-5">
+    <h2 class="mb-4">Giỏ Hàng Của Bạn</h2>
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Tổng</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="cart-body">
+          <tr class="cart-item">
+            <td class="d-flex align-items-center">
+              <img src="Picture/Shop/sofa 1-2.jpg" alt="Sofa" class="me-3 cart-img">
+              <span>Sofa hiện đại 3 chỗ</span>
+            </td>
+            <td class="price">4,250,000</td>
+            <td><input type="number" class="form-control quantity" value="1" min="1"></td>
+            <td class="total-price">4,250,000₫</td>
+            <td><button class="btn btn-danger btn-sm remove-btn"><i class="fas fa-trash"></i></button></td>
+          </tr>
+          <tr class="cart-item">
+            <td class="d-flex align-items-center">
+              <img src="Picture/Shop/categories-10.jpg" alt="Bàn ăn" class="me-3 cart-img">
+              <span>Tủ gỗ tự nhiên</span>
+            </td>
+            <td class="price">3,200,000</td>
+            <td><input type="number" class="form-control quantity" value="2" min="1"></td>
+            <td class="total-price">6,400,000₫</td>
+            <td><button class="btn btn-danger btn-sm remove-btn"><i class="fas fa-trash"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <a href="javascript:history.back()" class="back-btn"> Tiếp tục mua sắm</a>
+</div>
+
+    <!-- Cart Summary -->
+    <div class="d-flex justify-content-end mt-4">
+      <div class="cart-summary p-4 border rounded" style="max-width: 400px;">
+        <h4>Tổng giỏ hàng</h4>
+        <div class="d-flex justify-content-between mb-2">
+          <span>Tạm tính:</span>
+          <span id="subtotal">10,650,000₫</span>
+        </div>
+        <div class="d-flex justify-content-between mb-3">
+          <span>Phí vận chuyển:</span>
+          <span>Miễn phí</span>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-between mb-3 fw-bold fs-5">
+          <span>Tổng cộng:</span>
+          <span id="total">10,650,000₫</span>
+        </div>
+        <a href="checkout.html" class="btn btn-primary w-100">Thanh toán</a>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Phần footer -->
+    <div class="box-first-footer">
+        <div class="contact">
+            <h2>CONTACT US</h2>
+            <div class="in">
+                <div>Add :4 Copley Place, 7th Floor, Boston, MA 6</div>
+                <div>Tell : 866.453.4748</div>
+                <div>HR Fax: 810.222.5439</div>
+                <div>sales@funorifurniture.com</div>
+            </div>
+        </div>
+        <div class="contact">
+            <h2>CATEGOIRES</h2>
+            <div class="in">
+                <a href="">
+                    <div>Furniture</div>
+                </a>
+                <a href="">
+                    <div>Tables</div>
+                </a>
+                <a href="">
+                    <div>Seating</div>
+                </a>
+                <a href="">
+                    <div>Desks & office </div>
+                </a>
+                <a href="">
+                    <div>Storage</div>
+                </a>
+                <a href="">
+                    <div>Bed & Bath</div>
+                </a>
+            </div>
+        </div>
+        <div class="contact">
+            <h2>SERVICES</h2>
+            <div class="in">
+                <a href="">
+                    <div>Sale</div>
+                </a>
+                <a href="">
+                    <div>Quick Ship</div>
+                </a>
+                <a href="">
+                    <div>New Designs</div>
+                </a>
+                <a href="">
+                    <div>Accidental Fabric Protection</div>
+                </a>
+                <a href="">
+                    <div>Furniture Care</div>
+                </a>
+                <a href="">
+                    <div>Gift Cards</div>
+                </a>
+            </div>
+        </div>
+        <div class="contact">
+            <h2>JOIN US</h2>
+            <div class="in">
+                <div style="margin-bottom: 25px;">Enter your email below to be the first to know 
+                    <br>
+                    about new collections and product launches.
+                </div>
+                <div class="box-email">
+                    <input type="text" placeholder="Email adress...">
+                    <button type="submit">
+                        <i class="fa-solid fa-envelope"></i>
+                    </button>
+                </div>
+                <div class="icon-contact">
+                    <ul>
+                        <li>
+                            <a href="">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa-brands fa-dribbble"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa-brands fa-behance"></i>
+                            </a>
+                        </li>                     
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-second-footer">
+        <div class="first-box">
+            <div class="title">
+                Copyright © 2022. All Right Reserved
+            </div>
+        </div>
+        <div class="second-box">
+            <div class="box-bank">
+                <img src="Picture/payments-1.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- <div style="margin-bottom: 600px;"></div> -->
+</body>
+</html>
