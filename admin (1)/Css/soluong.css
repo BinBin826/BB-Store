@@ -1,0 +1,135 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: rgba(255,255,255,0.9);
+  padding: 40px;
+}
+
+h3 {
+  color: #ff9b42;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* ===== Bố cục tổng thể ===== */
+.content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* ===== Bộ lọc tra cứu (bên trái) ===== */
+.filter-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  max-width: 300px;
+  margin-bottom: 25px;
+  padding: 15px;
+  border: 1px solid #ff9b42;
+  border-radius: 8px;
+  background: rgba(255, 155, 66, 0.05);
+}
+
+.filter-box label {
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 3px;
+}
+
+.filter-box .form-control,
+.filter-box .form-select {
+  width: 100%;
+}
+
+/* Nút tra cứu */
+.btn-search {
+  align-self: center;
+  background: #ff9b42;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-weight: 500;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.btn-search:hover {
+  background: #d97d2d;
+}
+
+/* ===== Bảng bên phải ===== */
+.table-wrapper {
+  flex: 1;
+  overflow-x: visible; /* không hiện thanh trượt */
+}
+
+.table {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.table thead {
+  background: #ff9b42;
+  color: white;
+}
+
+.table th, .table td {
+  vertical-align: middle !important;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.table th:nth-child(1) { width: 80px; }
+.table th:nth-child(2) { width: 160px; }
+.table th:nth-child(3) { width: 100px; }
+.table th:nth-child(4),
+.table th:nth-child(6) { width: 130px; }
+.table th:nth-child(5),
+.table th:nth-child(7) { width: 130px; }
+.table th:nth-child(8) { width: 100px; }
+.table th:nth-child(9) { width: 120px; }
+
+.badge {
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+/* ===== Phân trang ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-item {
+  cursor: pointer;
+  padding: 8px 15px;
+  border-radius: 6px;
+  margin: 0 5px;
+  background: #fff;
+  color: #ff9b42;
+  border: 1px solid #ff9b42;
+  transition: all 0.3s;
+}
+
+.page-item.active,
+.page-item:hover {
+  background: #ff9b42;
+  color: white;
+}
+
+/* Hiệu ứng chuyển trang */
+.fade {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.fade.show {
+  opacity: 1;
+}
