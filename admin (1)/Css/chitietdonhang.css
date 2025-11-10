@@ -1,0 +1,43 @@
+body {
+  background: transparent !important;
+  font-family: 'Poppins', sans-serif;
+}
+
+.order-details {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  color: #333;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+.table th {
+  width: 220px;
+  background-color: rgba(255, 155, 66, 0.1);
+}
+
+.badge {
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+/* Nút quay lại */
+.btn-secondary {
+  border-radius: 8px;
+  font-weight: 500;
+  background-color: #ff9b42;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #ff7b00;
+  transform: scale(1.05);
+  color: #fff;
+}
