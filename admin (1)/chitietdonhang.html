@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chi Tiết Đơn Hàng</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f4f5f7;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .order-container {
+      max-width: 900px;
+      background: #fff;
+      padding: 35px 45px;
+      border-radius: 18px;
+      margin: 60px auto;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+    }
+
+    h3.title {
+      text-align: center;
+      font-weight: 600;
+      color: #ff9b42;
+      margin-bottom: 5px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: #555;
+      margin-top: 25px;
+      margin-bottom: 12px;
+    }
+
+    .product-img {
+      width: 230px;
+      height: 230px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1.5px solid #ddd;
+      display: block;
+      margin: auto;
+    }
+
+    .info-box {
+      background: #fafafa;
+      padding: 18px 22px;
+      border-radius: 12px;
+      border: 1px solid #ececec;
+    }
+
+    .info-box p {
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .badge-status {
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 8px;
+    }
+
+    .btn-back {
+      margin-top: 25px;
+      background-color: #ff9b42;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 26px;
+      transition: 0.3s;
+    }
+
+    .btn-back:hover {
+      background-color: #ff7b00;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="order-container">
+
+    <h3 class="title">Chi Tiết Đơn Hàng</h3>
+    <p class="text-muted text-center mb-4">Mã đơn hàng: <strong>#P001</strong></p>
+
+    <!-- Sản phẩm -->
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <img src="Picture/Shop/categories-10.jpg" class="product-img">
+      </div>
+
+      <div class="col-md-8">
+        <h5 class="fw-bold mb-3">Tủ ngăn kéo gỗ xoài</h5>
+
+        <div class="info-box">
+          <p><strong>Loại sản phẩm:</strong> Tủ</p>
+          <p><strong>Kích thước:</strong> 120cm x 80cm x 40cm</p>
+          <p><strong>Mô tả:</strong> Gỗ xoài tự nhiên, thiết kế tối giản, phù hợp nội thất hiện đại.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thông tin đơn hàng -->
+    <h6 class="section-title">Thông tin đơn hàng</h6>
+    <div class="info-box">
+      <p><strong>Khách hàng:</strong> Trần Nhựt Huy</p>
+      <p><strong>Ngày đặt:</strong> 12/12/2025</p>
+      <p><strong>Trạng thái:</strong> <span class="badge bg-warning text-dark badge-status">Mới đặt</span></p>
+      <p><strong>Tổng tiền:</strong> <span class="text-danger fw-semibold">250.000đ</span></p>
+    </div>
+
+    <!-- Thông tin giao hàng -->
+    <h6 class="section-title">Thông tin giao hàng</h6>
+    <div class="info-box">
+      <p><strong>Địa chỉ:</strong> 12 Nguyễn Văn Bảo, Gò Vấp, TP.HCM</p>
+      <p><strong>Số điện thoại:</strong> 0901 234 567</p>
+      <p><strong>Ghi chú:</strong> Giao buổi sáng, khách dễ thương 🌼</p>
+    </div>
+
+    <!-- Nút quay lại -->
+    <div class="text-center">
+      <button class="btn-back" onclick="window.location.href='quanlydonhang.html'">⬅ Quay lại</button>
+    </div>
+
+  </div>
+
+</body>
+</html>
