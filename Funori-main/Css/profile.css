@@ -68,3 +68,61 @@
         .box-second-footer {
             margin-top: 60px;
         }
+        /* Container avatar */
+.profile-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Avatar */
+.profile-section img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%; /* bo tròn */
+  object-fit: cover;
+  border: 3px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+/* hover avatar */
+.profile-section img:hover {
+  transform: scale(1.05);
+  border-color: #888;
+}
+
+/* Input file ẩn */
+.profile-section input[type="file"] {
+  display: none;
+}
+
+/* Nút camera */
+.profile-section label {
+  position: absolute;
+  bottom: 0;
+  left: 100px; /* căn theo avatar */
+  background-color: rgba(240, 222, 222, 0.6);
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  border: 2px solid #fff;
+  transition: all 0.3s ease;
+}
+
+/* Hover nút camera */
+.profile-section label:hover {
+  background-color: #b5a6a6;
+  transform: scale(1.1);
+}
+
+/* Icon camera */
+.profile-section label i {
+  pointer-events: none;
+}
