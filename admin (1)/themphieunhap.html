@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thêm phiếu nhập</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/themphieunhap.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="card-section big">
+    <h2 class="title-page">Thêm phiếu nhập</h2>
+
+    <!-- THÔNG TIN PHIẾU NHẬP -->
+    <div class="block">
+      <div class="block-title">Thông tin phiếu nhập</div>
+
+      <div class="row-line">
+        <div class="field">
+          <label>Ngày nhập</label>
+          <input type="date" class="form-control-custom">
+        </div>
+
+        <div class="field">
+          <label>Mã phiếu</label>
+          <input type="text" class="form-control-custom" placeholder="Tự động / PNxxx">
+        </div>
+      </div>
+    </div>
+
+    <!-- THÊM SẢN PHẨM -->
+    <div class="block">
+      <div class="block-title"><i class="fa fa-box-open"></i> Thêm sản phẩm</div>
+
+      <div id="product-list"></div>
+
+      <button class="btn btn-add" onclick="addProduct()">+ Thêm sản phẩm</button>
+    </div>
+
+    <!-- TỔNG KẾT -->
+    <div class="block">
+      <div class="block-title">Tổng kết phiếu nhập</div>
+
+      <div class="row-line">
+        <div class="field">
+          <label>Tổng số sản phẩm</label>
+          <input class="form-control-custom" id="totalProducts" disabled>
+        </div>
+
+        <div class="field">
+          <label>Tổng số lượng</label>
+          <input class="form-control-custom" id="totalQuantity" disabled>
+        </div>
+
+        <div class="field">
+          <label>Tổng giá trị (VND)</label>
+          <input class="form-control-custom" id="totalPrice" disabled>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-save-final" onclick="savePhieuNhap()">Lưu phiếu nhập</button>
+
+      <!-- ✅ Quay lại luôn đúng -->
+      <button class="btn back-btn" onclick="window.location.href='quanlynhaphang.html'">Quay lại</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function addProduct() {
+  let list = document.getElementById("product-list");
+  let box = document.createElement("div");
+  box.classList.add("product-box");
+
+  box.innerHTML = `
+    <div class="row-line">
+      <div class="field">
+        <label>Sản phẩm</label>
+        <input type="text" class="form-control-custom" placeholder="Tên sản phẩm">
+      </div>
+      <div class="field">
+        <label>Kích thước (D x R x C)</label>
+        <input type="text" class="form-control-custom" placeholder="VD: 120 x 60 x 45">
+      </div>
+    </div>
+
+    <div class="row-line">
+      <div class="field">
+        <label>Số lượng</label>
+        <input class="form-control-custom qty" type="number" value="1">
+      </div>
+      <div class="field">
+        <label>Giá nhập (VND)</label>
+        <input class="form-control-custom price" type="number" value="0">
+      </div>
+    </div>
+
+    <button class="btn btn-delete" onclick="removeProduct(this)">Xóa</button>
+  `;
+
+  list.appendChild(box);
+}
+
+function removeProduct(btn) {
+  btn.closest(".product-box").remove(); // ✅ Xóa đúng sản phẩm
+}
+
+function savePhieuNhap() {
+  alert("✅ Lưu phiếu nhập thành công!");
+  // Nếu muốn sau khi lưu quay về trang quản lý:
+   window.location.href = 'quanlynhaphang.html';
+}
+</script>
+
+</body>
+</html>
