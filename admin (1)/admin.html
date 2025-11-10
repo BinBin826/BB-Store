@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trang Quản Trị - FUNORI</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('Picture/Shop/banner-33.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* SIDEBAR */
+    .admin-sidebar {
+      width: 250px;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+      border-right: 1px solid rgba(255,255,255,0.3);
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    .admin-sidebar h2 {
+      font-size: 22px;
+      color: #ff9b42;
+      padding-left: 22px;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+    .menu-item {
+      color: #333;
+      text-decoration: none;
+      padding: 10px 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      transition: 0.3s;
+      border-radius: 8px;
+      margin: 2px 10px;
+      cursor: pointer;
+    }
+    .menu-item:hover {
+      background: rgba(255, 155, 66, 0.12);
+      color: #ff9b42;
+      transform: translateX(4px);
+    }
+    .menu-item.active {
+      background: rgba(255, 155, 66, 0.18);
+      color: #ff9b42;
+      font-weight: 500;
+    }
+    .menu-divider {
+      border: none;
+      border-top: 1px solid rgba(0,0,0,0.15);
+      margin: 15px 22px;
+    }
+    .admin-user {
+      padding: 0 22px;
+      font-size: 15px;
+      color: #333;
+    }
+    .admin-user .hello {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .username { font-weight: 500; color: #333; }
+    .logout-link {
+      display: block;
+      color: #333;
+      text-decoration: none;
+      font-size: 15px;
+      transition: 0.2s;
+      padding: 10px 22px;
+      border-radius: 8px;
+      margin: 8px 10px;
+    }
+    .logout-link:hover {
+      color: #ff9b42;
+      background: rgba(255, 155, 66, 0.1);
+    }
+
+    /* CONTENT */
+    .admin-content {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      border: none;
+      opacity: 0;
+      transition: opacity 1.0s ease;
+      background: rgba(255,255,255,0.3);
+    }
+    iframe.show {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    /* TOGGLE BUTTON (Mobile) */
+    .toggle-btn {
+      display: none;
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background-color: #ff9b42;
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      z-index: 1100;
+    }
+    .toggle-btn i { font-size: 18px; }
+
+    @media (max-width: 768px) {
+      .admin-sidebar {
+        position: fixed;
+        top: 0;
+        left: -260px;
+        height: 100%;
+        width: 250px;
+      }
+      .admin-sidebar.active { left: 0; }
+      .toggle-btn { display: block; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Nút mở sidebar trên mobile -->
+  <button class="toggle-btn" onclick="toggleSidebar()">
+    <i class="fa fa-bars"></i>
+  </button>
+
+  <!-- Sidebar -->
+  <div class="admin-sidebar">
+    <h2>FUNORI Admin</h2>
+
+    <a class="menu-item" onclick="loadPage('quanlykhachhang.html', event)">
+      <i class="fa fa-users"></i> Quản lý khách hàng
+    </a>  
+    
+    <a class="menu-item" onclick="loadPage('quanlyloaisp.html', event)">
+      <i class="fa fa-tags"></i> Quản lý loại sản phẩm
+    </a>
+    
+    <a class="menu-item" onclick="loadPage('quanlydanhmucsp.html', event)">
+      <i class="fa fa-box-open"></i> Quản lý danh mục sản phẩm
+    </a>
+
+    <a class="menu-item" onclick="loadPage('quanlynhaphang.html', event)">
+      <i class="fa fa-clipboard-list"></i> Quản lý nhập Sản phẩm
+    </a>
+
+    <a class="menu-item" onclick="loadPage('quanlygiaban.html', event)">
+      <i class="fa fa-dollar-sign"></i> Quản lý giá bán
+    </a>
+
+    <a class="menu-item" onclick="loadPage('quanlydonhang.html', event)">
+      <i class="fa fa-file-invoice"></i> Quản lý đơn hàng
+    </a>
+
+    <a class="menu-item" onclick="loadPage('quanlykho.html', event)">
+      <i class="fa fa-cubes"></i> Quản lý kho
+    </a>
+      
+
+    <hr class="menu-divider">
+
+    <div class="admin-user">
+      <div class="hello">
+        <i class="fa fa-user-circle"></i>
+        <span>Xin chào: <span id="usernameDisplay" class="username">Admin</span></span>
+      </div>
+    </div>
+
+    <a href="#" class="logout-link" onclick="logout()">
+      <i class="fa fa-sign-out-alt"></i> Đăng xuất
+    </a>
+  </div>
+
+  <!-- Nội dung chính -->
+  <div class="admin-content">
+    <iframe id="adminFrame"></iframe>
+  </div>
+
+  <script>
+    const frame = document.getElementById('adminFrame');
+    document.getElementById("usernameDisplay").innerText =
+      localStorage.getItem("username") || "Admin";
+
+    // Load trang vào iframe mượt
+    function loadPage(page, event) {
+      event.preventDefault();
+
+      // Xóa class show để làm mờ
+      frame.classList.remove("show");
+
+      // Đợi nhẹ rồi đổi src
+      setTimeout(() => {
+        frame.src = page;
+      }, 150);
+
+      // Cập nhật trạng thái menu
+      document.querySelectorAll(".menu-item").forEach(a => a.classList.remove("active"));
+      event.currentTarget.classList.add("active");
+
+      // Đóng sidebar khi trên mobile
+      if (window.innerWidth <= 768)
+        document.querySelector(".admin-sidebar").classList.remove("active");
+    }
+
+    // Khi iframe load xong thì hiển thị mượt
+    frame.addEventListener("load", () => {
+      frame.classList.add("show");
+    });
+
+    // Đăng xuất
+    function logout() {
+      localStorage.removeItem("username");
+      window.location.href = "index.html";
+    }
+
+    // Toggle sidebar mobile
+    function toggleSidebar() {
+      document.querySelector(".admin-sidebar").classList.toggle("active");
+    }
+
+    // Tải mặc định
+    window.onload = () => {
+      const first = document.querySelector(".menu-item");
+      loadPage("quanlykhachhang.html", { preventDefault: () => {}, currentTarget: first });
+    };
+  </script>
+  
+</body>
+</html>
