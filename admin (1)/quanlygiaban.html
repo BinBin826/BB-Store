@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quản lý giá bán</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="Css/sanpham.css">
+
+  <style>
+    h3 { color: #ff9b42; font-weight: 600; margin-bottom: 20px; }
+
+    .tab-buttons { display: flex; gap: 10px; margin-bottom: 18px; }
+
+    .tab-btn {
+      flex: 1; background: rgba(255,155,66,0.1);
+      border: 1px solid #ff9b42; padding: 10px;
+      font-weight: 600; color: #333; border-radius: 6px;
+      cursor: pointer; transition: 0.3s;
+    }
+
+    .tab-btn.active { background: #ff9b42; color: #fff; }
+
+    .table-wrapper { flex: 1; overflow-x: visible; }
+
+    .table {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(8px); border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .table thead { background: #ff9b42; color: white; }
+
+    .table th, .table td { text-align: center; vertical-align: middle !important; white-space: nowrap; }
+
+    .save-btn {
+      background: #78e08f; color: #fff; border: none;
+      border-radius: 6px; padding: 8px 20px; margin-top: 15px;
+      float: right; transition: 0.3s;
+    }
+    .save-btn:hover { background: #56c273; }
+
+    input.form-control { text-align: center; font-size: 14px; }
+  </style>
+</head>
+
+<body>
+  <h3><i class="fa fa-dollar-sign"></i> Quản lý giá bán</h3>
+
+  <div class="table-wrapper">
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="showTab('loai', event)">% Lợi nhuận theo Loại</button>
+      <button class="tab-btn" onclick="showTab('sanpham', event)">% Lợi nhuận theo Sản phẩm</button>
+    </div>
+
+    <!-- TAB 1 -->
+    <div id="tab-loai" class="tab-content">
+      <div class="d-flex justify-content-between mb-3">
+        <input type="text" class="form-control w-25" placeholder="🔍 Tìm kiếm loại sản phẩm...">
+        <select class="form-select w-25">
+          <option value="">Lọc theo nhóm</option>
+          <option>Bàn</option><option>Ghế</option><option>Tủ</option><option>Đèn</option><option>Kệ</option><option>Sofa</option>
+        </select>
+      </div>
+
+      <table class="table table-bordered table-hover align-middle text-center">
+        <thead class="table-warning">
+          <tr>
+            <th>STT</th><th>Loại sản phẩm</th><th>Giá vốn TB (₫)</th><th>% Lợi nhuận</th><th>Giá bán TB (₫)</th><th>Ghi chú</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Bàn</td><td>1.500.000</td><td><input type="number" value="30" class="form-control"></td><td>1.950.000</td><td><input type="text" class="form-control"></td></tr>
+          <tr><td>2</td><td>Ghế</td><td>400.000</td><td><input type="number" value="25" class="form-control"></td><td>500.000</td><td><input type="text" class="form-control"></td></tr>
+          <tr><td>3</td><td>Tủ</td><td>2.000.000</td><td><input type="number" value="20" class="form-control"></td><td>2.400.000</td><td><input type="text" class="form-control"></td></tr>
+          <tr><td>4</td><td>Đèn</td><td>250.000</td><td><input type="number" value="35" class="form-control"></td><td>338.000</td><td><input type="text" class="form-control"></td></tr>
+
+          <!-- ✅ Thêm Kệ -->
+          <tr><td>5</td><td>Kệ</td><td>850.000</td><td><input type="number" value="12" class="form-control"></td><td>952.000</td><td><input type="text" class="form-control"></td></tr>
+
+          <!-- ✅ Thêm Sofa -->
+          <tr><td>6</td><td>Sofa</td><td>6.500.000</td><td><input type="number" value="18" class="form-control"></td><td>7.670.000</td><td><input type="text" class="form-control"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TAB 2 -->
+    <div id="tab-sanpham" class="tab-content" style="display:none;">
+      <div class="d-flex justify-content-between mb-3">
+        <input type="text" class="form-control w-25" placeholder="🔍 Tìm kiếm sản phẩm...">
+        <select class="form-select w-25">
+          <option value="">Lọc theo loại</option>
+          <option>Bàn</option><option>Ghế</option><option>Tủ</option><option>Đèn</option><option>Kệ</option><option>Sofa</option>
+        </select>
+      </div>
+
+      <table class="table table-bordered table-hover align-middle text-center">
+        <thead class="table-warning">
+          <tr><th>STT</th><th>Tên sản phẩm</th><th>Loại</th><th>Giá vốn (₫)</th><th>% Lợi nhuận</th><th>Giá bán (₫)</th><th>Ghi chú</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Bàn gỗ sồi</td><td>Bàn</td><td>1.000.000</td><td><input type="number" value="30" class="form-control"></td><td>1.300.000</td><td><input type="text" class="form-control"></td></tr>
+          <tr><td>2</td><td>Ghế nhựa trắng</td><td>Ghế</td><td>200.000</td><td><input type="number" value="25" class="form-control"></td><td>250.000</td><td><input type="text" class="form-control"></td></tr>
+          <tr><td>3</td><td>Tủ quần áo</td><td>Tủ</td><td>2.500.000</td><td><input type="number" value="20" class="form-control"></td><td>3.000.000</td><td><input type="text" class="form-control"></td></tr>
+          <tr><td>4</td><td>Đèn bàn</td><td>Đèn</td><td>180.000</td><td><input type="number" value="40" class="form-control"></td><td>250.000</td><td><input type="text" class="form-control"></td></tr>
+
+          <!-- ✅ SP Kệ -->
+          <tr><td>5</td><td>Kệ sách gỗ</td><td>Kệ</td><td>850.000</td><td><input type="number" value="12" class="form-control"></td><td>952.000</td><td><input type="text" class="form-control"></td></tr>
+
+          <!-- ✅ SP Sofa -->
+          <tr><td>6</td><td>Ghế Sofa đơn</td><td>Sofa</td><td>6.500.000</td><td><input type="number" value="18" class="form-control"></td><td>7.670.000</td><td><input type="text" class="form-control"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button class="save-btn" onclick="confirmSave()"> Lưu thay đổi</button>
+  </div>
+
+  <script>
+    function showTab(tab, e) {
+      document.getElementById("tab-loai").style.display = (tab === 'loai') ? 'block' : 'none';
+      document.getElementById("tab-sanpham").style.display = (tab === 'sanpham') ? 'block' : 'none';
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+      e.target.classList.add("active");
+    }
+
+    function confirmSave(){
+      if(confirm("💾 Bạn có muốn lưu thay đổi giá bán không?")){
+        alert("✅ Đã lưu thay đổi thành công!");
+      }
+    }
+  </script>
+
+</body>
+</html>
