@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quản lý nhập hàng</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="Css/sanpham.css">
+
+
+</head>
+
+<body>
+  <h3><i class="fa fa-clipboard-list"></i> Quản lý nhập hàng</h3>
+
+      <!-- Bảng bên phải -->
+<div class="table-wrapper">
+  <!-- Trang 1 -->
+  <div id="page1" class="fade show">
+      <!-- THANH TÌM KIẾM -->
+<div class="search-row">
+  <div class="left">
+    <input type="text" class="search-input" placeholder="🔍 Tìm kiếm mã phiếu">
+
+    <input type="date" class="search-input small">
+    <span>đến</span>
+    <input type="date" class="search-input small">
+
+    <select class="search-input small">
+  <option>Hoàn thành</option>
+  <option>Chưa hoàn thành</option>
+</select>
+
+
+    <button class="btn-filter"><i class="fa fa-filter"></i> Lọc</button>
+  </div>
+
+  <a href="themphieunhap.html" class="btn-add-green">
+    <i class="fa fa-plus"></i> Thêm phiếu nhập
+  </a>
+</div>
+
+    <table class="table table-bordered table-hover align-middle text-center">
+      <thead class="table-warning">
+        <tr>
+          <th>Mã phiếu</th>
+          <th>Ngày nhập</th>
+          <th>Tổng giá trị</th>
+          <th>Tổng số lượng</th>
+          <th>Số sản phẩm</th>
+          <th>Trạng thái</th>
+          <th>Chỉnh sửa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PN001</td>
+          <td>01/11/2025</td>
+          <td>12.300.000₫</td>
+          <td>150</td>
+          <td>3</td>
+           <td><span class="badge bg-success">Hoàn thành</span></td>
+          <td><a href="chitiet-phieunhaphang.html" class="btn-action"><i class="fa-solid fa-pen-to-square"></i></a></td>
+        </tr>
+        <tr>
+          <td>PN002</td>
+          <td>31/10/2025</td>
+          <td>8.450.000₫</td>
+          <td>95</td>
+          <td>2</td>
+          <td><span class="badge bg-warning text-dark">Chưa hoàn thành</span></td>
+          <td><a href="chitiet-phieunhaphang.html" class="btn-action"><i class="fa-solid fa-pen-to-square"></i></a></td>
+        </tr>
+        <tr>
+          <td>PN003</td>
+          <td>29/10/2025</td>
+          <td>4.700.000₫</td>
+          <td>50</td>
+          <td>1</td>
+          <td><span class="badge bg-warning text-dark">Chưa hoàn thành</span></td>
+          <td><a href="chitiet-phieunhaphang.html" class="btn-action"><i class="fa-solid fa-pen-to-square"></i></a></td>
+        </tr>
+        <tr>
+          <td>PN004</td>
+          <td>28/10/2025</td>
+          <td>10.200.000₫</td>
+          <td>120</td>
+          <td>2</td>
+         <td><span class="badge bg-warning text-dark">Chưa hoàn thành</span></td>
+          <td><a href="chitiet-phieunhaphang.html" class="btn-action"><i class="fa-solid fa-pen-to-square"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Trang 2 -->
+  <div id="page2" class="fade" style="display:none;">
+      <!-- THANH TÌM KIẾM -->
+  <div class="search-row">
+  <div class="left">
+    <input type="text" class="search-input" placeholder="🔍 Tìm kiếm mã phiếu">
+
+    <input type="date" class="search-input small">
+    <span>đến</span>
+    <input type="date" class="search-input small">
+
+    <select class="search-input small">
+  <option>Hoàn thành</option>
+  <option>Chưa hoàn thành</option>
+</select>
+
+
+    <button class="btn-filter"><i class="fa fa-filter"></i> Lọc</button>
+  </div>
+
+  <a href="themphieunhap.html" class="btn-add-green">
+    <i class="fa fa-plus"></i> Thêm phiếu nhập
+  </a>
+</div>
+
+    <table class="table table-bordered table-hover align-middle text-center">
+      <thead class="table-warning">
+        <tr>
+          <th>Mã phiếu</th>
+          <th>Ngày nhập</th>
+          <th>Tổng giá trị</th>
+          <th>Tổng số lượng</th>
+          <th>Số sản phẩm</th>
+          <th>Trạng thái</th>
+          <th>Chỉnh Sửa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PN005</td>
+          <td>27/10/2025</td>
+          <td>6.300.000₫</td>
+          <td>70</td>
+          <td>1</td>
+           <td><span class="badge bg-success">Hoàn thành</span></td>
+          <td><a href="chitiet-phieunhaphang.html" class="btn-action"><i class="fa-solid fa-pen-to-square"></i></a></td>
+        </tr>
+        <tr>
+          <td>PN006</td>
+          <td>26/10/2025</td>
+          <td>14.800.000₫</td>
+          <td>200</td>
+          <td>3</td>
+          <td><span class="badge bg-success">Hoàn thành</span></td>
+          <td><a href="chitiet-phieunhaphang.html" class="btn-action"><i class="fa-solid fa-pen-to-square"></i></a></td>
+        </tr>
+        <tr>
+          <td>PN007</td>
+          <td>25/10/2025</td>
+          <td>7.950.000₫</td>
+          <td>85</td>
+          <td>2</td>
+          <td><span class="badge bg-warning text-dark">Chưa hoàn thành</span></td>
+          <td><a href="chitiet-phieunhaphang.html" class="btn-action"><i class="fa-solid fa-pen-to-square"></i></a></td>
+        </tr>
+        <tr>
+          <td>PN008</td>
+          <td>23/10/2025</td>
+          <td>3.250.000₫</td>
+          <td>40</td>
+          <td>1</td>
+          <td><span class="badge bg-warning text-dark">Chưa hoàn thành</span></td>
+          <td><a href="chitiet-phieunhaphang.html" class="btn-action"><i class="fa-solid fa-pen-to-square"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Phân trang -->
+  <div class="pagination">
+    <div class="page-item active" onclick="showPage(1)">1</div>
+    <div class="page-item" onclick="showPage(2)">2</div>
+  </div>
+</div>
+
+<script>
+    function showPage(page) {
+      const p1 = document.getElementById('page1');
+      const p2 = document.getElementById('page2');
+      const buttons = document.querySelectorAll('.page-item');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      buttons[page - 1].classList.add('active');
+
+      if (page === 1) {
+        p2.classList.remove('show');
+        setTimeout(() => {
+          p2.style.display = 'none';
+          p1.style.display = 'block';
+          setTimeout(() => p1.classList.add('show'), 10);
+        }, 300);
+      } else {
+        p1.classList.remove('show');
+        setTimeout(() => {
+          p1.style.display = 'none';
+          p2.style.display = 'block';
+          setTimeout(() => p2.classList.add('show'), 10);
+        }, 300);
+      }
+    }
+
+
+ </script>
+</body>
+</html>
