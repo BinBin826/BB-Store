@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý khách hàng</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="Css/khachhang.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: rgba(255,255,255,0.9);
+      padding: 40px;
+    }
+    h3 {
+      color: #ff9b42;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+    .table thead {
+      background: #ff9b42;
+      color: white;
+    }
+    .btn-action {
+      border: none;
+      background: none;
+      color: #ff9b42;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 0 5px;
+    }
+    .btn-action:hover {
+      color: #d97d2d;
+    }
+    .search-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .search-box input {
+      width: 260px;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .page-item {
+      cursor: pointer;
+      padding: 8px 15px;
+      border-radius: 6px;
+      margin: 0 5px;
+      background: #fff;
+      color: #ff9b42;
+      border: 1px solid #ff9b42;
+      transition: all 0.3s;
+    }
+    .page-item.active, .page-item:hover {
+      background: #ff9b42;
+      color: white;
+    }
+
+    /* Hiệu ứng chuyển bảng */
+    .fade {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .fade.show {
+      opacity: 1;
+    }
+    .btn-lock {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.btn-lock.unlocked {
+  background-color: #28a745; /* xanh */
+  color: white;
+}
+.btn-lock.locked {
+  background-color: #dc3545; /* đỏ */
+  color: white;
+}
+.btn-reset {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: 500;
+  transition: 0.3s;
+  margin-left: 5px;
+}
+.btn-reset:hover {
+  background-color: #0069d9;
+}
+.btn-reset {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background-color: #ff9b42;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-reset:hover {
+  background-color: #e0842f;
+}
+.btn-reset.success {
+  background-color: #28a745 !important; /* xanh */
+}
+.btn-lock, .btn-reset {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: pointer;
+  color: white;
+  margin: 2px;
+}
+.btn-lock.unlocked { background-color: #28a745; }
+.btn-lock.locked { background-color: #dc3545; }
+.btn-reset { background-color: #ff9b42; }
+.btn-reset:hover { background-color: #e0842f; }
+.btn-reset.success { background-color: #28a745 !important; }
+
+
+
+  </style>
+</head>
+<body>
+  <h3><i class="fa fa-users"></i> Quản lý khách hàng</h3>
+
+
+  <!-- Trang 1 -->
+  <div id="page1" class="fade show">
+    <table class="table table-bordered table-hover align-middle text-center">
+      <thead class="table-warning">
+        <tr>
+          <th>ID</th>
+          <th>Họ tên</th>
+          <th>Email</th>
+          <th>Số điện thoại</th>
+          <th>Địa chỉ</th>
+          <th>Xem chi tiết</th>
+          <th>Chức năng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>KH001</td>
+          <td>Nguyễn Văn A</td>
+          <td>vana@example.com</td>
+          <td>0909123456</td>
+          <td>Hồ Chí Minh</td>
+                <td>
+          <a href="thongtinkh.html" class="btn-action"><i class="fa fa-eye"></i></a>
+         
+        </td>
+
+        <td>
+          <button class="btn-lock unlocked" onclick="toggleLock(this)">
+            <i class="fa fa-lock-open"></i> Mở
+          </button>
+          <button class="btn-reset" onclick="resetPassword(this)">
+            <i class="fa fa-rotate"></i> Reset
+          </button>
+        </td>
+
+        </tr>
+        <tr>
+          <td>KH002</td>
+          <td>Trần Thị B</td>
+          <td>tranb@example.com</td>
+          <td>0934567890</td>
+          <td>Hà Nội</td>
+                <td>
+          <a href="thongtinkh.html" class="btn-action"><i class="fa fa-eye"></i></a>
+         
+        </td>
+
+        <td>
+          <button class="btn-lock unlocked" onclick="toggleLock(this)">
+            <i class="fa fa-lock-open"></i> Mở
+          </button>
+          <button class="btn-reset" onclick="resetPassword(this)">
+            <i class="fa fa-rotate"></i> Reset
+          </button>
+        </td>
+        </tr>
+        <tr>
+          <td>KH003</td>
+          <td>Lê Văn C</td>
+          <td>levanc@example.com</td>
+          <td>0912345678</td>
+          <td>Đà Nẵng</td>
+                <td>
+          <a href="thongtinkh.html" class="btn-action"><i class="fa fa-eye"></i></a>
+          
+        </td>
+
+        <td>
+          <button class="btn-lock unlocked" onclick="toggleLock(this)">
+            <i class="fa fa-lock-open"></i> Mở
+          </button>
+          <button class="btn-reset" onclick="resetPassword(this)">
+            <i class="fa fa-rotate"></i> Reset
+          </button>
+        </td>
+
+        </tr>
+        <tr>
+          <td>KH004</td>
+          <td>Phạm Thị D</td>
+          <td>phamtd@example.com</td>
+          <td>0988765432</td>
+          <td>Hải Phòng</td>
+                <td>
+          <a href="thongtinkh.html" class="btn-action"><i class="fa fa-eye"></i></a>
+          
+        </td>
+
+        <td>
+          <button class="btn-lock unlocked" onclick="toggleLock(this)">
+            <i class="fa fa-lock-open"></i> Mở
+          </button>
+          <button class="btn-reset" onclick="resetPassword(this)">
+            <i class="fa fa-rotate"></i> Reset
+          </button>
+        </td>
+
+        </tr>
+        <tr>
+          <td>KH005</td>
+          <td>Võ Minh E</td>
+          <td>vominhe@example.com</td>
+          <td>0977554433</td>
+          <td>Cần Thơ</td>
+               <td>
+          <a href="thongtinkh.html" class="btn-action"><i class="fa fa-eye"></i></a>
+          
+        </td>
+
+        <td>
+          <button class="btn-lock unlocked" onclick="toggleLock(this)">
+            <i class="fa fa-lock-open"></i> Mở
+          </button>
+          <button class="btn-reset" onclick="resetPassword(this)">
+            <i class="fa fa-rotate"></i> Reset
+          </button>
+        </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Trang 2 -->
+  <div id="page2" class="fade" style="display:none;">
+    <table class="table table-bordered table-hover align-middle text-center">
+      <thead class="table-warning">
+        <tr>
+          <th>ID</th>
+          <th>Họ tên</th>
+          <th>Email</th>
+          <th>Số điện thoại</th>
+          <th>Địa chỉ</th>
+          <th>Xem chi tiết</th>
+          <th>Chức năng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>KH006</td>
+          <td>Nguyễn Thị F</td>
+          <td>nguyentf@example.com</td>
+          <td>0932123456</td>
+          <td>Biên Hòa</td>
+                <td>
+          <a href="thongtinkh.html" class="btn-action"><i class="fa fa-eye"></i></a>
+          
+        </td>
+
+        <td>
+          <button class="btn-lock unlocked" onclick="toggleLock(this)">
+            <i class="fa fa-lock-open"></i> Mở
+          </button>
+          <button class="btn-reset" onclick="resetPassword(this)">
+            <i class="fa fa-rotate"></i> Reset
+          </button>
+        </td>
+
+        </tr>
+        <tr>
+          <td>KH007</td>
+          <td>Phan Văn G</td>
+          <td>phanvg@example.com</td>
+          <td>0908333222</td>
+          <td>Bình Dương</td>
+                <td>
+          <a href="thongtinkh.html" class="btn-action"><i class="fa fa-eye"></i></a>
+          
+        </td>
+
+        <td>
+          <button class="btn-lock unlocked" onclick="toggleLock(this)">
+            <i class="fa fa-lock-open"></i> Mở
+          </button>
+          <button class="btn-reset" onclick="resetPassword(this)">
+            <i class="fa fa-rotate"></i> Reset
+          </button>
+        </td>
+
+        </tr>
+        <tr>
+          <td>KH008</td>
+          <td>Đặng Thị H</td>
+          <td>dangth@example.com</td>
+          <td>0911777888</td>
+          <td>Huế</td>
+                <td>
+          <a href="thongtinkh.html" class="btn-action"><i class="fa fa-eye"></i></a>
+          
+        </td>
+
+        <td>
+          <button class="btn-lock unlocked" onclick="toggleLock(this)">
+            <i class="fa fa-lock-open"></i> Mở
+          </button>
+          <button class="btn-reset" onclick="resetPassword(this)">
+            <i class="fa fa-rotate"></i> Reset
+          </button>
+        </td>
+
+        </tr>
+        <tr>
+          <td>KH009</td>
+          <td>Trương Minh I</td>
+          <td>truongmi@example.com</td>
+          <td>0988000111</td>
+          <td>Quảng Nam</td>
+                <td>
+          <a href="thongtinkh.html" class="btn-action"><i class="fa fa-eye"></i></a>
+          
+        </td>
+
+        <td>
+          <button class="btn-lock unlocked" onclick="toggleLock(this)">
+            <i class="fa fa-lock-open"></i> Mở
+          </button>
+          <button class="btn-reset" onclick="resetPassword(this)">
+            <i class="fa fa-rotate"></i> Reset
+          </button>
+        </td>
+
+        </tr>
+        <tr>
+          <td>KH010</td>
+          <td>Huỳnh Gia K</td>
+          <td>huynhgk@example.com</td>
+          <td>0909777666</td>
+          <td>Bạc Liêu</td>
+               <td>
+          <a href="thongtinkh.html" class="btn-action"><i class="fa fa-eye"></i></a>
+          
+        </td>
+
+        <td>
+          <button class="btn-lock unlocked" onclick="toggleLock(this)">
+            <i class="fa fa-lock-open"></i> Mở
+          </button>
+          <button class="btn-reset" onclick="resetPassword(this)">
+            <i class="fa fa-rotate"></i> Reset
+          </button>
+        </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Phân trang -->
+  <div class="pagination">
+    <div class="page-item active" onclick="showPage(1)">1</div>
+    <div class="page-item" onclick="showPage(2)">2</div>
+  </div>
+
+  <script>
+    function showPage(page) {
+      const p1 = document.getElementById('page1');
+      const p2 = document.getElementById('page2');
+      const buttons = document.querySelectorAll('.page-item');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      buttons[page - 1].classList.add('active');
+
+      if (page === 1) {
+        p2.classList.remove('show');
+        setTimeout(() => {
+          p2.style.display = 'none';
+          p1.style.display = 'block';
+          setTimeout(() => p1.classList.add('show'), 10);
+        }, 300);
+      } else {
+        p1.classList.remove('show');
+        setTimeout(() => {
+          p1.style.display = 'none';
+          p2.style.display = 'block';
+          setTimeout(() => p2.classList.add('show'), 10);
+        }, 300);
+      }
+    }
+  </script>
+  <script>
+  function toggleLock(button) {
+    const icon = button.querySelector("i");
+    if (button.classList.contains("unlocked")) {
+      button.classList.remove("unlocked");
+      button.classList.add("locked");
+      button.innerHTML = '<i class="fa fa-lock"></i> Khóa';
+    } else {
+      button.classList.remove("locked");
+      button.classList.add("unlocked");
+      button.innerHTML = '<i class="fa fa-lock-open"></i> Mở';
+    }
+  }
+</script>
+
+<script>
+  function resetPassword(button) {
+    // Thay đổi nội dung & kiểu nút
+    button.innerHTML = '<i class="fa fa-check"></i> Đã reset';
+    button.classList.add('success');
+    button.disabled = true;
+
+    // Sau 2 giây khôi phục lại
+    setTimeout(() => {
+      button.innerHTML = '<i class="fa fa-rotate"></i> Reset';
+      button.classList.remove('success');
+      button.disabled = false;
+    }, 2000);
+  }
+</script>
+
+<script>
+  function toggleLock(button) {
+    if (button.classList.contains("unlocked")) {
+      button.classList.remove("unlocked");
+      button.classList.add("locked");
+      button.innerHTML = '<i class="fa fa-lock"></i> Khóa';
+    } else {
+      button.classList.remove("locked");
+      button.classList.add("unlocked");
+      button.innerHTML = '<i class="fa fa-lock-open"></i> Mở';
+    }
+  }
+
+  function resetPassword(button) {
+    button.innerHTML = '<i class="fa fa-check"></i> Đã reset';
+    button.classList.add('success');
+    button.disabled = true;
+
+    setTimeout(() => {
+      button.innerHTML = '<i class="fa fa-rotate"></i> Reset';
+      button.classList.remove('success');
+      button.disabled = false;
+    }, 2000);
+  }
+</script>
+
+<div id="toast" class="toast"></div>
+
+</body>
+</html>
