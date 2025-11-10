@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: rgba(255,255,255,0.9);
+  padding: 40px;
+}
+
+h3 {
+  color: #ff9b42;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* Bố cục tổng thể */
+.content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* Bộ lọc */
+.filter-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  max-width: 300px;
+  padding: 15px;
+  border: 1px solid #ff9b42;
+  border-radius: 8px;
+  background: rgba(255, 155, 66, 0.05);
+}
+
+.filter-box label {
+  font-weight: 500;
+  color: #444;
+}
+
+.btn-search {
+  align-self: center;
+  background: #ff9b42;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-weight: 500;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.btn-search:hover {
+  background: #d97d2d;
+}
+
+/* Bảng */
+.table-wrapper {
+  flex: 1;
+  overflow-x: visible;
+}
+
+.table {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.table thead {
+  background: #ff9b42;
+  color: white;
+}
+
+.table th, .table td {
+  text-align: center;
+  vertical-align: middle !important;
+  white-space: nowrap;
+}
+
+.btn-action {
+  border: none;
+  background: none;
+  color: #ff9b42;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.btn-action:hover {
+  color: #d97d2d;
+}
+
+.badge {
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+/* Phân trang */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-item {
+  cursor: pointer;
+  padding: 8px 15px;
+  border-radius: 6px;
+  margin: 0 5px;
+  background: #fff;
+  color: #ff9b42;
+  border: 1px solid #ff9b42;
+  transition: all 0.3s;
+}
+
+.page-item.active,
+.page-item:hover {
+  background: #ff9b42;
+  color: white;
+}
+
+/* Hiệu ứng fade */
+.fade {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.fade.show {
+  opacity: 1;
+}
