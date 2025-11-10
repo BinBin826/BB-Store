@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý đơn hàng</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="Css/donhang.css">
+</head>
+<body>
+  <h3><i class="fa fa-file-invoice"></i> Quản lý đơn hàng</h3>
+
+  <div class="content-wrapper">
+    <!-- Bộ lọc bên trái -->
+    <div class="filter-box">
+      <div>
+        <label for="fromDate" class="form-label">Từ ngày:</label>
+        <input type="date" id="fromDate" class="form-control">
+      </div>
+
+      <div>
+        <label for="toDate" class="form-label">Đến ngày:</label>
+        <input type="date" id="toDate" class="form-control">
+      </div>
+
+      <div>
+        <label for="statusFilter" class="form-label">Tình trạng:</label>
+        <select id="statusFilter" class="form-select">
+          <option value="">Tất cả</option>
+          <option>Đã giao</option>
+          <option>Đang giao</option>
+          <option>Đang xử lý</option>
+          <option>Đã hủy</option>
+        </select>
+      </div>
+
+      <button class="btn-search" onclick="searchOrders()">🔍 Tra cứu</button>
+    </div>
+
+    <!-- Bảng bên phải -->
+    <div class="table-wrapper">
+      <!-- Trang 1 -->
+      <div id="page1" class="fade show">
+        <table class="table table-bordered table-hover align-middle text-center">
+          <thead class="table-warning">
+            <tr>
+              <th>Mã đơn</th>
+              <th>Khách hàng</th>
+              <th>Ngày đặt</th>
+              <th>Tổng tiền</th>
+              <th>Tình trạng</th>
+              <th>Xem chi tiết</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DH001</td>
+              <td>Nguyễn Văn A</td>
+              <td>01/11/2025</td>
+              <td>1.250.000₫</td>
+              <td><span class="badge bg-success">Đã giao</span></td>
+              <td><a href="chitietdonhang.html" class="btn-action"><i class="fa fa-eye"></i></a></td>
+            </tr>
+            <tr>
+              <td>DH002</td>
+              <td>Trần Thị B</td>
+              <td>31/10/2025</td>
+              <td>980.000₫</td>
+              <td><span class="badge bg-warning text-dark">Đang xử lý</span></td>
+              <td><a href="chitietdonhang.html" class="btn-action"><i class="fa fa-eye"></i></a></td>
+            </tr>
+            <tr>
+              <td>DH003</td>
+              <td>Lê Văn C</td>
+              <td>29/10/2025</td>
+              <td>2.150.000₫</td>
+              <td><span class="badge bg-danger">Đã hủy</span></td>
+              <td><a href="chitietdonhang.html" class="btn-action"><i class="fa fa-eye"></i></a></td>
+            </tr>
+            <tr>
+              <td>DH004</td>
+              <td>Phạm Thị D</td>
+              <td>28/10/2025</td>
+              <td>3.000.000₫</td>
+              <td><span class="badge bg-info text-dark">Đang giao</span></td>
+              <td><a href="chitietdonhang.html" class="btn-action"><i class="fa fa-eye"></i></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Trang 2 -->
+      <div id="page2" class="fade" style="display:none;">
+        <table class="table table-bordered table-hover align-middle text-center">
+          <thead class="table-warning">
+            <tr>
+              <th>Mã đơn</th>
+              <th>Khách hàng</th>
+              <th>Ngày đặt</th>
+              <th>Tổng tiền</th>
+              <th>Tình trạng</th>
+              <th>Xem chi tiết</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DH005</td>
+              <td>Võ Minh E</td>
+              <td>27/10/2025</td>
+              <td>750.000₫</td>
+              <td><span class="badge bg-success">Đã giao</span></td>
+              <td><a href="chitietdonhang.html" class="btn-action"><i class="fa fa-eye"></i></a></td>
+            </tr>
+            <tr>
+              <td>DH006</td>
+              <td>Nguyễn Thị F</td>
+              <td>26/10/2025</td>
+              <td>2.300.000₫</td>
+              <td><span class="badge bg-success">Đã giao</span></td>
+              <td><a href="chitietdonhang.html" class="btn-action"><i class="fa fa-eye"></i></a></td>
+            </tr>
+            <tr>
+              <td>DH007</td>
+              <td>Phan Văn G</td>
+              <td>25/10/2025</td>
+              <td>1.120.000₫</td>
+              <td><span class="badge bg-warning text-dark">Đang xử lý</span></td>
+              <td><a href="chitietdonhang.html" class="btn-action"><i class="fa fa-eye"></i></a></td>
+            </tr>
+            <tr>
+              <td>DH008</td>
+              <td>Đặng Thị H</td>
+              <td>23/10/2025</td>
+              <td>680.000₫</td>
+              <td><span class="badge bg-info text-dark">Đang giao</span></td>
+              <td><a href="chitietdonhang.html" class="btn-action"><i class="fa fa-eye"></i></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Phân trang -->
+      <div class="pagination">
+        <div class="page-item active" onclick="showPage(1)">1</div>
+        <div class="page-item" onclick="showPage(2)">2</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showPage(page) {
+      const p1 = document.getElementById('page1');
+      const p2 = document.getElementById('page2');
+      const buttons = document.querySelectorAll('.page-item');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      buttons[page - 1].classList.add('active');
+
+      if (page === 1) {
+        p2.classList.remove('show');
+        setTimeout(() => {
+          p2.style.display = 'none';
+          p1.style.display = 'block';
+          setTimeout(() => p1.classList.add('show'), 10);
+        }, 300);
+      } else {
+        p1.classList.remove('show');
+        setTimeout(() => {
+          p1.style.display = 'none';
+          p2.style.display = 'block';
+          setTimeout(() => p2.classList.add('show'), 10);
+        }, 300);
+      }
+    }
+
+    function searchOrders() {
+      alert("🔍 Tra cứu đơn hàng thành công!");
+    }
+  </script>
+  
+</body>
+</html>
