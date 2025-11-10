@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quản lý sản phẩm - Tổng</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="Css/sanpham.css">
+</head>
+<body>
+  <h3><i class="fa fa-boxes"></i> Quản lý sản phẩm</h3>
+
+  <div class="content-wrapper">
+    <div class="filter-box">
+      <h5 class="fw-semibold mb-3 text-center">Tùy chọn</h5>
+      <button class="btn btn-add" onclick="go('quanlyloaisp.html')"><i class="fa fa-tags"></i> Quản lý loại sản phẩm</button>
+      <button class="btn btn-edit mt-2" onclick="go('quanlydanhmucsp.html')"><i class="fa fa-box-open"></i> Quản lý danh mục</button>
+      <button class="btn btn-add mt-2" onclick="go('quanlynhaphang.html')"><i class="fa fa-clipboard-list"></i> Quản lý nhập hàng</button>
+      <button class="btn btn-save mt-2" onclick="go('quanlygiaban.html')"><i class="fa fa-dollar-sign"></i> Quản lý giá bán</button>
+    </div>
+
+
+<script>
+  function go(page){
+    // nếu mở trong iframe của admin, vẫn sẽ load trong iframe
+    location.href = page;
+  }
+</script>
+
+</body>
+</html>
