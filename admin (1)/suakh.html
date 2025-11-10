@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sửa thông tin khách hàng</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: rgba(255,255,255,0.8);
+      padding: 40px;
+    }
+    h3 {
+      color: #ff9b42;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+    .form-box {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+    .btn-orange {
+      background: #ff9b42;
+      color: white;
+      border: none;
+    }
+    .btn-orange:hover {
+      background: #e67c2a;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h3><i class="fa fa-pen"></i> Sửa thông tin khách hàng</h3>
+
+  <form class="form-box" onsubmit="saveChanges(event)">
+    <div class="mb-3">
+      <label class="form-label">Họ tên</label>
+      <input type="text" class="form-control" value="Nguyễn Văn A">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" value="vana@example.com">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Số điện thoại</label>
+      <input type="text" class="form-control" value="0909123456">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Địa chỉ</label>
+      <input type="text" class="form-control" value="Hồ Chí Minh">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Trạng thái</label>
+      <select class="form-select">
+        <option selected>Hoạt động</option>
+        <option>Ngừng hoạt động</option>
+      </select>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <a href="quanlykhachhang.html" class="btn btn-secondary">
+        <i class="fa fa-arrow-left"></i> Quay lại
+      </a>
+      <button type="submit" class="btn btn-orange">
+        <i class="fa fa-save"></i> Lưu thay đổi
+      </button>
+    </div>
+  </form>
+
+  <script>
+    // ✅ Khi nhấn "Lưu thay đổi" -> hiển thị thông báo
+    function saveChanges(event) {
+      event.preventDefault(); // Ngăn tải lại trang
+      alert("✅ Lưu thông tin khách hàng thành công!");
+    }
+  </script>
+</body>
+</html>
+
+
+
+ 
