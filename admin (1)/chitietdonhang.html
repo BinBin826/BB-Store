@@ -9,18 +9,22 @@
 
   <style>
     body {
-      background-color: #f4f5f7;
-      font-family: 'Poppins', sans-serif;
-    }
+  background: rgba(255,255,255,0.75); /* trắng mờ */
+  backdrop-filter: blur(6px); /* mịn nền */
+  font-family: "Inter", sans-serif;
+}
 
     .order-container {
-      max-width: 900px;
-      background: #fff;
-      padding: 35px 45px;
-      border-radius: 18px;
-      margin: 60px auto;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.10);
-    }
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.92); /* trắng mờ nhẹ */
+  backdrop-filter: blur(6px); /* tạo hiệu ứng trong kính mờ */
+  padding: 35px 45px;
+  border-radius: 18px;
+  margin: 60px auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+  border: 1px solid rgba(255, 155, 66, 0.35); /* viền cam nhạt */
+}
+
 
     h3.title {
       text-align: center;
@@ -32,7 +36,7 @@
     .section-title {
       font-size: 17px;
       font-weight: 600;
-      color: #555;
+      color: #ff9b42;
       margin-top: 25px;
       margin-bottom: 12px;
     }
@@ -42,21 +46,22 @@
       height: 230px;
       border-radius: 14px;
       object-fit: cover;
-      border: 1.5px solid #ddd;
+      border: 2px solid #ff9b42;
       display: block;
       margin: auto;
     }
 
     .info-box {
-      background: #fafafa;
+      background: #ffe7d1; /* Cam pastel */
       padding: 18px 22px;
       border-radius: 12px;
-      border: 1px solid #ececec;
+      border: 1px solid #ff9b42;
     }
 
     .info-box p {
       margin-bottom: 8px;
       font-size: 15px;
+      color: #5a4230;
     }
 
     .badge-status {
@@ -89,44 +94,50 @@
     <h3 class="title">Chi Tiết Đơn Hàng</h3>
     <p class="text-muted text-center mb-4">Mã đơn hàng: <strong>#P001</strong></p>
 
-    <!-- Sản phẩm -->
-    <div class="row align-items-center">
+    <!-- Sản phẩm 1 -->
+    <div class="row align-items-center mb-4">
       <div class="col-md-4">
         <img src="Picture/Shop/categories-10.jpg" class="product-img">
       </div>
 
       <div class="col-md-8">
-        <h5 class="fw-bold mb-3">Tủ ngăn kéo gỗ xoài</h5>
+        <h5 class="fw-bold mb-3" style="color:#ff9b42;">Tủ ngăn kéo gỗ xoài</h5>
 
         <div class="info-box">
           <p><strong>Loại sản phẩm:</strong> Tủ</p>
           <p><strong>Kích thước:</strong> 120cm x 80cm x 40cm</p>
           <p><strong>Mô tả:</strong> Gỗ xoài tự nhiên, thiết kế tối giản, phù hợp nội thất hiện đại.</p>
+          <p><strong>Giá tiền:</strong> 300.000đ</p>
         </div>
       </div>
-<!-- Sản phẩm -->
-    <div class="row align-items-center">
+    </div>
+
+    <!-- Sản phẩm 2 -->
+    <div class="row align-items-center mb-4">
       <div class="col-md-4">
-        <img src="Picture/Shop/categories-10.jpg" class="product-img">
+        <img src="Picture/Shop/categories-18.jpg" class="product-img">
       </div>
 
       <div class="col-md-8">
-        <h5 class="fw-bold mb-3">Tủ ngăn kéo gỗ xoài</h5>
+        <h5 class="fw-bold mb-3" style="color:#ff9b42;">Ghế xếp</h5>
 
         <div class="info-box">
-          <p><strong>Loại sản phẩm:</strong> Tủ</p>
-          <p><strong>Kích thước:</strong> 120cm x 80cm x 40cm</p>
-          <p><strong>Mô tả:</strong> Gỗ xoài tự nhiên, thiết kế tối giản, phù hợp nội thất hiện đại.</p>
+          <p><strong>Loại sản phẩm:</strong> Ghế</p>
+          <p><strong>Kích thước:</strong> 40cm x 35cm x 80cm</p>
+          <p><strong>Mô tả:</strong> Tiện lợi, dễ dàng mang theo khi dã ngoại.</p>
+          <p><strong>Giá tiền:</strong> 125.000đ</p>
         </div>
       </div>
+    </div>
 
     <!-- Thông tin đơn hàng -->
     <h6 class="section-title">Thông tin đơn hàng</h6>
     <div class="info-box">
       <p><strong>Khách hàng:</strong> Trần Nhựt Huy</p>
       <p><strong>Ngày đặt:</strong> 12/12/2025</p>
+      <p><strong>Số lượng sản phẩm:</strong> 2</p>
       <p><strong>Trạng thái:</strong> <span class="badge bg-warning text-dark badge-status">Mới đặt</span></p>
-      <p><strong>Tổng tiền:</strong> <span class="text-danger fw-semibold">250.000đ</span></p>
+      <p><strong>Tổng tiền:</strong> <span class="text-danger fw-semibold">425.000đ</span></p>
     </div>
 
     <!-- Thông tin giao hàng -->
