@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết phiếu nhập</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style-phieunhap.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="card-section big">
+
+    <h2 class="title-page">Chi tiết phiếu nhập</h2>
+
+   <!-- TRẠNG THÁI ĐẶT TRÊN CÙNG -->
+<div class="block">
+  <div class="block-title">Trạng thái phiếu nhập</div>
+
+  <div class="row-line">
+    <div class="field">
+      <select class="form-control-custom" id="statusSelect">
+        <option value="Chưa hoàn thành">Chưa hoàn thành</option>
+        <option value="Hoàn thành">Hoàn thành</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+
+<!-- THÔNG TIN PHIẾU NHẬP BÊN DƯỚI -->
+<div class="block">
+  <div class="block-title">Thông tin phiếu nhập</div>
+
+  <div class="row-line">
+    <div class="field">
+      <label>Ngày nhập</label>
+      <input type="date" class="form-control-custom" value="2024-06-20" disabled>
+    </div>
+
+    <div class="field">
+      <label>Mã phiếu</label>
+      <input type="text" class="form-control-custom" value="PN003" disabled>
+    </div>
+  </div>
+
+  <div class="btn-row mt-1">
+    <button class="btn btn-grey btn-edit" onclick="editBlock(this)">Chỉnh sửa</button>
+    <button class="btn btn-save-active btn-save" onclick="saveBlock(this)">Lưu</button>
+  </div>
+</div>
+
+
+    <!-- DANH SÁCH SẢN PHẨM -->
+    <div class="block">
+      <div class="block-title"><i class="fa fa-box-open"></i> Danh sách sản phẩm</div>
+
+      <!-- SẢN PHẨM -->
+      <div class="product-box">
+        <div class="row-line">
+          <div class="field">
+            <label>Sản phẩm</label>
+            <input type="text" class="form-control-custom" value="Bàn gỗ sồi" disabled>
+          </div>
+          <div class="field">
+            <label>Kích thước (D x R x C)</label>
+            <input type="text" class="form-control-custom" value="120 x 60 x 45 cm" disabled>
+          </div>
+        </div>
+
+        <div class="row-line">
+          <div class="field">
+            <label>Số lượng</label>
+            <input class="form-control-custom" value="10" disabled>
+          </div>
+          <div class="field">
+            <label>Giá nhập (VND)</label>
+            <input class="form-control-custom" value="1.200.000" disabled>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-grey btn-edit" onclick="editBlock(this)">Chỉnh sửa</button>
+           <button class="btn btn-save-active btn-save" onclick="saveBlock(this)">Lưu</button>
+        </div>
+      </div>
+
+      <!-- SẢN PHẨM 2 -->
+      <div class="product-box">
+        <div class="row-line">
+          <div class="field">
+            <label>Sản phẩm</label>
+            <input type="text" class="form-control-custom" value="Ghế Sofa" disabled>
+          </div>
+          <div class="field">
+            <label>Kích thước (D x R x C)</label>
+            <input type="text" class="form-control-custom" value="220 x 90 x 75 cm" disabled>
+          </div>
+        </div>
+
+        <div class="row-line">
+          <div class="field">
+            <label>Số lượng</label>
+            <input class="form-control-custom" value="5" disabled>
+          </div>
+          <div class="field">
+            <label>Giá nhập (VND)</label>
+            <input class="form-control-custom" value="6.500.000" disabled>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-grey btn-edit" onclick="editBlock(this)">Chỉnh sửa</button>
+           <button class="btn btn-save-active btn-save" onclick="saveBlock(this)">Lưu</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TỔNG KẾT -->
+    <div class="block">
+      <div class="block-title">Tổng kết phiếu nhập</div>
+
+      <div class="row-line">
+        <div class="field">
+          <label>Tổng số sản phẩm</label>
+          <input class="form-control-custom" value="3" disabled>
+        </div>
+        <div class="field">
+          <label>Tổng số lượng</label>
+          <input class="form-control-custom" value="18" disabled>
+        </div>
+        <div class="field">
+          <label>Tổng giá trị (VND)</label>
+          <input class="form-control-custom" value="52.700.000" disabled>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-action">
+  <button class="btn back-btn" onclick="window.location.href='quanlynhaphang.html'">Quay lại</button>
+  <button class="btn btn-save-final" onclick="savePhieuNhap()">Lưu phiếu</button>
+</div>
+
+  </div>
+
+</div>
+
+<script>
+function editBlock(btn) {
+  const box = btn.closest(".product-box, .block");
+  const inputs = box.querySelectorAll("input");
+  const save = box.querySelector(".btn-save");
+
+  // mở khóa input
+  inputs.forEach(input => input.disabled = false);
+
+  // nút chỉnh → vàng
+  btn.classList.add("btn-edit-active");
+
+  // nút lưu → xám chờ
+  save.classList.remove("btn-save-active");
+  save.classList.add("btn-save-wait");
+}
+
+function saveBlock(btn) {
+  const box = btn.closest(".product-box, .block");
+  const inputs = box.querySelectorAll("input");
+  const edit = box.querySelector(".btn-edit");
+
+  // khóa input
+  inputs.forEach(input => input.disabled = true);
+
+  // nút chỉnh về xám
+  edit.classList.remove("btn-edit-active");
+  edit.classList.add("btn-grey");
+
+  // nút lưu → xanh lại
+  btn.classList.remove("btn-save-wait");
+  btn.classList.add("btn-save-active");
+}
+
+function savePhieuNhap() {
+  const status = document.getElementById("statusSelect").value;
+  alert("✅ Phiếu nhập đã được lưu!\nTrạng thái: " + status);
+  window.location.href = "quanlynhaphang.html";
+}
+
+
+/*  ✅  PHẦN THÊM ĐỂ ẨN/HIỆN NÚT THEO TRẠNG THÁI  */
+const statusSelect = document.getElementById("statusSelect");
+
+function updateButtonsByStatus() {
+  const allEditButtons = document.querySelectorAll(".btn-edit");
+  const allSaveButtons = document.querySelectorAll(".btn-save");
+  const allInputs = document.querySelectorAll("input");
+
+  if (statusSelect.value === "Hoàn thành") {
+    allEditButtons.forEach(btn => btn.style.display = "none");
+    allSaveButtons.forEach(btn => btn.style.display = "none");
+    allInputs.forEach(input => input.disabled = true);
+  } else {
+    allEditButtons.forEach(btn => btn.style.display = "inline-block");
+    allSaveButtons.forEach(btn => btn.style.display = "inline-block");
+  }
+}
+
+updateButtonsByStatus();
+statusSelect.addEventListener("change", updateButtonsByStatus);
+
+</script>
+
+</body>
+</html>
