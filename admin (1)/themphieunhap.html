@@ -11,7 +11,6 @@
 <body>
 
 <div class="container">
-
   <div class="card-section big">
     <h2 class="title-page">Thêm phiếu nhập</h2>
 
@@ -26,8 +25,8 @@
         </div>
 
         <div class="field">
-          <label>Mã phiếu</label>
-          <input type="text" class="form-control-custom" placeholder="Tự động / PNxxx">
+          <label>Mã phiếu nhập</label>
+          <input type="text" class="form-control-custom" placeholder="Nhập mã phiếu...">
         </div>
       </div>
     </div>
@@ -63,43 +62,68 @@
       </div>
     </div>
 
-    <div class="btn-row">
-      <button class="btn btn-save-final" onclick="savePhieuNhap()">Lưu phiếu nhập</button>
-
-      <!-- ✅ Quay lại luôn đúng -->
-      <button class="btn back-btn" onclick="window.location.href='quanlynhaphang.html'">Quay lại</button>
+    <!-- NÚT HÀNH ĐỘNG -->
+    <div class="btn-row" style="display:flex; justify-content:center; gap:20px; margin-top:20px;">
+      <button class="btn btn-save-final" onclick="savePhieuNhap()">💾 Lưu phiếu nhập</button>
+      <button class="btn back-btn" onclick="window.location.href='quanlynhaphang.html'">⬅ Quay lại</button>
     </div>
 
   </div>
-
 </div>
 
 <script>
 function addProduct() {
-  let list = document.getElementById("product-list");
-  let box = document.createElement("div");
+  const list = document.getElementById("product-list");
+  const box = document.createElement("div");
   box.classList.add("product-box");
 
   box.innerHTML = `
     <div class="row-line">
       <div class="field">
-        <label>Sản phẩm</label>
-        <input type="text" class="form-control-custom" placeholder="Tên sản phẩm">
+        <label>Loại sản phẩm</label>
+        <select class="form-control-custom">
+          <option value="">-- Chọn loại --</option>
+          <option>Bàn</option>
+          <option>Ghế</option>
+          <option>Đèn</option>
+          <option>Tủ</option>
+        </select>
       </div>
+
       <div class="field">
-        <label>Kích thước (D x R x C)</label>
-        <input type="text" class="form-control-custom" placeholder="VD: 120 x 60 x 45">
+        <label>Tên sản phẩm</label>
+        <select class="form-control-custom">
+          <option value="">-- Chọn sản phẩm --</option>
+          <option>Bàn gỗ sồi</option>
+          <option>Ghế nhựa đen</option>
+          <option>Kệ sách gỗ</option>
+          <option>Ghế sofa</option>
+          <option>Ghế gỗ cách điệu</option>
+        </select>
       </div>
     </div>
 
     <div class="row-line">
       <div class="field">
-        <label>Số lượng</label>
-        <input class="form-control-custom qty" type="number" value="1">
+        <label>Kích thước (D x R x C)</label>
+        <input type="text" class="form-control-custom" placeholder="VD: 120 x 60 x 45">
       </div>
+
+      <div class="field">
+        <label>Số lượng</label>
+        <input type="number" class="form-control-custom" value="1" min="1">
+      </div>
+    </div>
+
+    <div class="row-line">
       <div class="field">
         <label>Giá nhập (VND)</label>
-        <input class="form-control-custom price" type="number" value="0">
+        <input type="number" class="form-control-custom" value="0" min="0">
+      </div>
+
+      <div class="field">
+        <label>Ghi chú</label>
+        <input type="text" class="form-control-custom" placeholder="Ghi chú (nếu có)...">
       </div>
     </div>
 
@@ -110,13 +134,12 @@ function addProduct() {
 }
 
 function removeProduct(btn) {
-  btn.closest(".product-box").remove(); // ✅ Xóa đúng sản phẩm
+  btn.closest(".product-box").remove();
 }
 
 function savePhieuNhap() {
-  alert("✅ Lưu phiếu nhập thành công!");
-  // Nếu muốn sau khi lưu quay về trang quản lý:
-   window.location.href = 'quanlynhaphang.html';
+  alert("✅ Phiếu nhập đã được lưu.");
+  window.location.href = 'quanlynhaphang.html';
 }
 </script>
 
