@@ -54,15 +54,24 @@
       <button class="tab-btn" onclick="showTab('sanpham', event)">% Lợi nhuận theo Sản phẩm</button>
     </div>
 
-    <!-- TAB 1 -->
-    <div id="tab-loai" class="tab-content">
-      <div class="d-flex justify-content-between mb-3">
-        <input type="text" class="form-control w-25" placeholder="🔍 Tìm kiếm loại sản phẩm...">
-        <select class="form-select w-25">
-          <option value="">Lọc theo nhóm</option>
-          <option>Bàn</option><option>Ghế</option><option>Tủ</option><option>Đèn</option><option>Kệ</option><option>Sofa</option>
-        </select>
-      </div>
+   <!-- TAB 1 -->
+<div id="tab-loai" class="tab-content">
+
+  <!-- Hàng tìm kiếm + lọc + nút -->
+  <div class="d-flex align-items-center gap-2 mb-3">
+    <input type="text" class="form-control w-25" placeholder="🔍 Tìm kiếm loại sản phẩm...">
+
+    <select class="form-select w-25">
+      <option value="">Loại</option>
+      <option>Bàn</option><option>Ghế</option><option>Tủ</option>
+      <option>Đèn</option><option>Kệ</option><option>Sofa</option>
+    </select>
+
+    <!-- NÚT LỌC -->
+    <button class="btn-filter" onclick="filterNotify()">
+  <i class="fa fa-filter"></i> Lọc
+</button>
+  </div>
 
       <table class="table table-bordered table-hover align-middle text-center">
         <thead class="table-warning">
@@ -86,36 +95,45 @@
     </div>
 
     <!-- TAB 2 -->
-    <div id="tab-sanpham" class="tab-content" style="display:none;">
-      <div class="d-flex justify-content-between mb-3">
-        <input type="text" class="form-control w-25" placeholder="🔍 Tìm kiếm sản phẩm...">
-        <select class="form-select w-25">
-          <option value="">Lọc theo loại</option>
-          <option>Bàn</option><option>Ghế</option><option>Tủ</option><option>Đèn</option><option>Kệ</option><option>Sofa</option>
-        </select>
-      </div>
+<div id="tab-sanpham" class="tab-content" style="display:none;">
 
-      <table class="table table-bordered table-hover align-middle text-center">
-        <thead class="table-warning">
-          <tr><th>STT</th><th>Tên sản phẩm</th><th>Loại</th><th>Giá vốn (₫)</th><th>% Lợi nhuận</th><th>Giá bán (₫)</th><th>Ghi chú</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td>Bàn gỗ sồi</td><td>Bàn</td><td>1.000.000</td><td><input type="number" value="30" class="form-control"></td><td>1.300.000</td><td><input type="text" class="form-control"></td></tr>
-          <tr><td>2</td><td>Ghế nhựa trắng</td><td>Ghế</td><td>200.000</td><td><input type="number" value="25" class="form-control"></td><td>250.000</td><td><input type="text" class="form-control"></td></tr>
-          <tr><td>3</td><td>Tủ quần áo</td><td>Tủ</td><td>2.500.000</td><td><input type="number" value="20" class="form-control"></td><td>3.000.000</td><td><input type="text" class="form-control"></td></tr>
-          <tr><td>4</td><td>Đèn bàn</td><td>Đèn</td><td>180.000</td><td><input type="number" value="40" class="form-control"></td><td>250.000</td><td><input type="text" class="form-control"></td></tr>
+  <!-- Hàng tìm kiếm + lọc + nút Lọc -->
+  <div class="d-flex align-items-center gap-2 mb-3">
+    <input type="text" class="form-control w-25" placeholder="🔍 Tìm kiếm sản phẩm...">
 
-          <!-- ✅ SP Kệ -->
-          <tr><td>5</td><td>Kệ sách gỗ</td><td>Kệ</td><td>850.000</td><td><input type="number" value="12" class="form-control"></td><td>952.000</td><td><input type="text" class="form-control"></td></tr>
+    <select class="form-select w-25">
+      <option value="">Loại</option>
+      <option>Bàn</option><option>Ghế</option><option>Tủ</option>
+      <option>Đèn</option><option>Kệ</option><option>Sofa</option>
+    </select>
 
-          <!-- ✅ SP Sofa -->
-          <tr><td>6</td><td>Ghế Sofa đơn</td><td>Sofa</td><td>6.500.000</td><td><input type="number" value="18" class="form-control"></td><td>7.670.000</td><td><input type="text" class="form-control"></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <button class="save-btn" onclick="confirmSave()"> Lưu thay đổi</button>
+    <!-- NÚT LỌC -->
+     <button class="btn-filter" onclick="filterNotify2()">
+  <i class="fa fa-filter"></i> Lọc
+</button>
   </div>
+
+  <table class="table table-bordered table-hover align-middle text-center">
+    <thead class="table-warning">
+      <tr>
+        <th>STT</th><th>Tên sản phẩm</th><th>Loại</th><th>Giá vốn (₫)</th>
+        <th>% Lợi nhuận</th><th>Giá bán (₫)</th><th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Bàn gỗ sồi</td><td>Bàn</td><td>1.000.000</td><td><input type="number" value="30" class="form-control"></td><td>1.300.000</td><td><input type="text" class="form-control"></td></tr>
+      <tr><td>2</td><td>Ghế nhựa trắng</td><td>Ghế</td><td>200.000</td><td><input type="number" value="25" class="form-control"></td><td>250.000</td><td><input type="text" class="form-control"></td></tr>
+      <tr><td>3</td><td>Tủ quần áo</td><td>Tủ</td><td>2.500.000</td><td><input type="number" value="20" class="form-control"></td><td>3.000.000</td><td><input type="text" class="form-control"></td></tr>
+      <tr><td>4</td><td>Đèn bàn</td><td>Đèn</td><td>180.000</td><td><input type="number" value="40" class="form-control"></td><td>250.000</td><td><input type="text" class="form-control"></td></tr>
+
+      <!-- SP Kệ -->
+      <tr><td>5</td><td>Kệ sách gỗ</td><td>Kệ</td><td>850.000</td><td><input type="number" value="12" class="form-control"></td><td>952.000</td><td><input type="text" class="form-control"></td></tr>
+
+      <!-- SP Sofa -->
+      <tr><td>6</td><td>Ghế Sofa đơn</td><td>Sofa</td><td>6.500.000</td><td><input type="number" value="18" class="form-control"></td><td>7.670.000</td><td><input type="text" class="form-control"></td></tr>
+    </tbody>
+  </table>
+</div>
 
   <script>
     function showTab(tab, e) {
@@ -130,6 +148,13 @@
         alert("✅ Đã lưu thay đổi thành công!");
       }
     }
+    function filterNotify2(){
+  alert("🔎Đã lọc sản phẩm!");
+}
+function filterNotify(){
+  alert("🔎 Đã lọc theo loại!");
+}
+
   </script>
 
 </body>
