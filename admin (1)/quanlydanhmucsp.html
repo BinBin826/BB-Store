@@ -9,6 +9,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="Css/sanpham.css">
 
+  <style>
+    /* Hiệu ứng mờ khi đổi trang */
+    .fade {
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .fade.show {
+      opacity: 1;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+    }
+    .page-item {
+      padding: 8px 15px;
+      background: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .page-item.active {
+      background: #ff9b42;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
@@ -22,9 +49,11 @@
       </button>
     </div>
 
-    <div class="product-grid">
+    <!-- ⬇⬇⬇ PAGE 1 START ⬇⬇⬇ -->
+    <div id="page1" class="fade show">
+      <div class="product-grid">
 
-      <!-- SP 1 -->
+       <!-- SP 1 -->
       <div class="product-card">
         <img src="Picture/img-16-600x600.jpg" alt="A Chair AAC 22">
         <div class="info">
@@ -170,44 +199,216 @@
     </div>
   </div>
 
+
+    <!-- ⬇⬇⬇ PAGE 2 START (9 SP MỚI) ⬇⬇⬇ -->
+    <div id="page2" class="fade" style="display:none;">
+      <div class="product-grid">
+
+       <!-- SP 1 -->
+      <div class="product-card">
+        <img src="Picture/img-16-600x600.jpg" alt="A Chair AAC 22">
+        <div class="info">
+          <p><strong>Mã:</strong> SP001</p>
+          <p><strong>Loại:</strong> Ghế</p>
+          <h6>A Chair AAC 22</h6>
+          <p>Ghế AAC 22 kết hợp hài hòa giữa hình dáng, chức năng, sự thoải mái và tính thẩm mỹ.</p>
+          <span class="badge bg-success">Đang bán</span>
+        </div>
+        <div class="actions">
+          <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+          <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
+        </div>
+      </div>
+
+      <!-- SP 2 -->
+      <div class="product-card">
+        <img src="Picture/Shop/products-15-6-600x600.jpg" alt="Ghế nhựa đen">
+        <div class="info">
+          <p><strong>Mã:</strong> SP002</p>
+          <p><strong>Loại:</strong> Ghế</p>
+          <h6>Ghế nhựa đen</h6>
+          <p>Chất liệu nhựa cao cấp, dễ vệ sinh, bền màu.</p>
+          <span class="badge bg-warning text-dark">Tạm ẩn</span>
+        </div>
+        <div class="actions">
+          <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+          <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye-slash"></i></button>
+        </div>
+      </div>
+
+      <!-- SP 3 -->
+      <div class="product-card">
+        <img src="Picture/Shop/products-13-600x600.jpg" alt="Kệ sách gỗ">
+        <div class="info">
+          <p><strong>Mã:</strong> SP003</p>
+          <p><strong>Loại:</strong> Kệ</p>
+          <h6>Kệ sách gỗ</h6>
+          <p>Thiết kế đơn giản, nhiều tầng, chịu lực tốt.</p>
+          <span class="badge bg-success">Đang bán</span>
+        </div>
+        <div class="actions">
+          <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+          <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
+        </div>
+      </div>
+
+    <!-- SP 4 -->
+    <div class="product-card">
+      <img src="Picture/Shop/products-10-7.jpg" alt="Bàn trà gỗ">
+      <div class="info">
+        <p><strong>Mã:</strong> SP004</p>
+        <p><strong>Loại:</strong> Bàn</p>
+        <h6>Bàn trà gỗ</h6>
+        <p>Phù hợp phòng khách nhỏ gọn, tinh tế.</p>
+        <span class="badge bg-success">Đang bán</span>
+      </div>
+      <div class="actions">
+        <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+      <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
+      </div>
+    </div>
+
+    <!-- SP 5 -->
+    <div class="product-card">
+      <img src="Picture/Shop/products-10-1-600x600.jpg" alt="Ghế gỗ cách điệu">
+      <div class="info">
+        <p><strong>Mã:</strong> SP005</p>
+        <p><strong>Loại:</strong> Ghế</p>
+        <h6>Ghế gỗ cách điệu</h6>
+        <p>Dễ gấp gọn, tiện lợi khi di chuyển.</p>
+        <span class="badge bg-success">Đang bán</span>
+      </div>
+      <div class="actions">
+        <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+        <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
+      </div>
+    </div>
+
+    <!-- SP 6 -->
+    <div class="product-card">
+      <img src="Picture/Shop/products-17-7-600x600.jpg" alt="Tủ gỗ sồi">
+      <div class="info">
+        <p><strong>Mã:</strong> SP006</p>
+        <p><strong>Loại:</strong> Tủ</p>
+        <h6>Tủ gỗ sồi</h6>
+        <p>Chất liệu bền đẹp, nhiều ngăn tiện dụng.</p>
+        <span class="badge bg-warning text-dark">Tạm ẩn</span>
+      </div>
+      <div class="actions">
+        <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+        <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye-slash"></i></button>
+      </div>
+    </div>
+
+    <!-- SP 7 -->
+    <div class="product-card">
+      <img src="Picture/Shop/categories-18.jpg" alt="Ghế xếp">
+      <div class="info">
+        <p><strong>Mã:</strong> SP007</p>
+        <p><strong>Loại:</strong> Ghế</p>
+        <h6>Ghế xếp</h6>
+        <p>Tiện lợi, dễ dàng mang theo khi dã ngoại.</p>
+        <span class="badge bg-success">Đang bán</span>
+      </div>
+      <div class="actions">
+        <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+       <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
+      </div>
+    </div>
+
+    <!-- SP 8 -->
+    <div class="product-card">
+      <img src="Picture/Shop/products-16-6.jpg" alt="Bàn làm việc">
+      <div class="info">
+        <p><strong>Mã:</strong> SP008</p>
+        <p><strong>Loại:</strong> Bàn</p>
+        <h6>Bàn làm việc</h6>
+        <p>Bàn gỗ sơn đen, phong cách tối giản.</p>
+        <span class="badge bg-success">Đang bán</span>
+      </div>
+      <div class="actions">
+        <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+       <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
+      </div>
+    </div>
+
+    <!-- SP 9 -->
+    <div class="product-card">
+      <img src="Picture/categories-6.jpg" alt="Ghế sofa">
+      <div class="info">
+        <p><strong>Mã:</strong> SP009</p>
+        <p><strong>Loại:</strong> Sofa</p>
+        <h6>Ghế sofa</h6>
+        <p>Thoải mái, tinh tế, phù hợp không gian hiện đại.</p>
+        <span class="badge bg-success">Đang bán</span>
+      </div>
+      <div class="actions">
+        <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+       <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
+    </div>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- PHÂN TRANG -->
+    <div class="pagination">
+      <div class="page-item active" onclick="showPage(1)">1</div>
+      <div class="page-item" onclick="showPage(2)">2</div>
+    </div>
+  </div>
+
+
   <script>
+    /* ================== PHÂN TRANG ================== */
+    function showPage(page) {
+      const p1 = document.getElementById("page1");
+      const p2 = document.getElementById("page2");
+      const buttons = document.querySelectorAll(".page-item");
 
-    /* 🔥 HÀM MỚI: chuyển sang trang sửa sản phẩm */
-    function goEdit(url) {
-      window.location.href = url;
+      buttons.forEach(btn => btn.classList.remove("active"));
+      buttons[page - 1].classList.add("active");
+
+      if (page === 1) {
+        p2.classList.remove("show");
+        setTimeout(() => {
+          p2.style.display = "none";
+          p1.style.display = "block";
+          setTimeout(() => p1.classList.add("show"), 10);
+        }, 300);
+      } else {
+        p1.classList.remove("show");
+        setTimeout(() => {
+          p1.style.display = "none";
+          p2.style.display = "block";
+          setTimeout(() => p2.classList.add("show"), 10);
+        }, 300);
+      }
     }
 
-    /* 🔥 HÀM MỚI: thêm sản phẩm */
-    function goAddProduct() {
-      window.location.href = 'themsanpham.html';
-    }
+    /* == Giữ nguyên 3 hàm bạn đang dùng == */
+    function goEdit(url) { window.location.href = url; }
+    function goAddProduct() { window.location.href = 'themsanpham.html'; }
 
-    /* Giữ nguyên hàm ẩn/hiện sản phẩm */
     function toggleHide(btn) {
       const card = btn.closest(".product-card");
       const badge = card.querySelector(".badge");
       const icon = btn.querySelector("i");
 
       if (badge.textContent.trim() === "Đang bán") {
-
         badge.classList.remove("bg-success");
         badge.classList.add("bg-warning", "text-dark");
         badge.textContent = "Tạm ẩn";
-
-        icon.classList.remove("fa-eye");
-        icon.classList.add("fa-eye-slash");
+        icon.classList.replace("fa-eye", "fa-eye-slash");
       }
       else {
-
         badge.classList.remove("bg-warning", "text-dark");
         badge.classList.add("bg-success");
         badge.textContent = "Đang bán";
-
-        icon.classList.remove("fa-eye-slash");
-        icon.classList.add("fa-eye");
+        icon.classList.replace("fa-eye-slash", "fa-eye");
       }
     }
-
   </script>
+
 </body>
 </html>
