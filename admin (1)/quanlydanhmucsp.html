@@ -4,100 +4,73 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Quản lý danh mục sản phẩm</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="Css/sanpham.css">
-
-  <style>
-  #editPopup {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    z-index: 999;
-  }
-
-  /* Tăng chiều cao popup thêm chút cho thoáng */
-  #editFrame {
-    width: 520px;
-    height: 740px; /* cao hơn, vừa khung, không cần trượt */
-    border: 2px solid #ff9b42;
-    border-radius: 14px;
-    background: white;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-    animation: popupShow 0.35s ease;
-  }
-
-  @keyframes popupShow {
-    from { opacity: 0; transform: translateY(15px) scale(0.96); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-</style>
 
 </head>
 
 <body>
   <h3><i class="fa fa-box-open"></i> Quản lý danh mục sản phẩm</h3>
 
+  <div class="table-wrapper">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="fw-semibold mb-0"></h5>
+      <button class="btn btn-success" onclick="goAddProduct()">
+        <i class="fa fa-plus"></i> Thêm sản phẩm
+      </button>
+    </div>
 
-    <div class="table-wrapper">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h5 class="fw-semibold mb-0"></h5>
-        <button class="btn btn-success" onclick="addProduct()">
-          <i class="fa fa-plus"></i> Thêm sản phẩm
-        </button>
-      </div>
-   <div class="product-grid">
-        <!-- SP 1 -->
-        <div class="product-card">
-          <img src="Picture/Shop/products-4.jpg" alt="Bàn gỗ sồi">
-          <div class="info">
-            <p><strong>Mã:</strong> SP001</p>
-            <p><strong>Loại:</strong> Bàn</p>
-            <h6>Bàn gỗ sồi</h6>
-            <p>Thiết kế đơn giản, gỗ tự nhiên.</p>
-            <span class="badge bg-success">Đang bán</span>
-          </div>
-          <div class="actions">
-            <button class="btn-action edit" onclick="openEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
-            <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
-          </div>
+    <div class="product-grid">
+
+      <!-- SP 1 -->
+      <div class="product-card">
+        <img src="Picture/img-16-600x600.jpg" alt="A Chair AAC 22">
+        <div class="info">
+          <p><strong>Mã:</strong> SP001</p>
+          <p><strong>Loại:</strong> Ghế</p>
+          <h6>A Chair AAC 22</h6>
+          <p>Ghế AAC 22 kết hợp hài hòa giữa hình dáng, chức năng, sự thoải mái và tính thẩm mỹ.</p>
+          <span class="badge bg-success">Đang bán</span>
         </div>
-        <!-- SP 2 -->
-    <div class="product-card">
-      <img src="Picture/Shop/products-15-6-600x600.jpg" alt="Ghế nhựa đen">
-      <div class="info">
-        <p><strong>Mã:</strong> SP002</p>
-        <p><strong>Loại:</strong> Ghế</p>
-        <h6>Ghế nhựa đen</h6>
-        <p>Chất liệu nhựa cao cấp, dễ vệ sinh, bền màu.</p>
-        <span class="badge bg-warning text-dark">Tạm ẩn</span>
+        <div class="actions">
+          <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+          <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
+        </div>
       </div>
-      <div class="actions">
-        <button class="btn-action edit" onclick="openEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
-        <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye-slash"></i></button>
-      </div>
-    </div>
 
-    <!-- SP 3 -->
-    <div class="product-card">
-      <img src="Picture/Shop/products-13-600x600.jpg" alt="Kệ sách gỗ">
-      <div class="info">
-        <p><strong>Mã:</strong> SP003</p>
-        <p><strong>Loại:</strong> Kệ</p>
-        <h6>Kệ sách gỗ</h6>
-        <p>Thiết kế đơn giản, nhiều tầng, chịu lực tốt.</p>
-        <span class="badge bg-success">Đang bán</span>
+      <!-- SP 2 -->
+      <div class="product-card">
+        <img src="Picture/Shop/products-15-6-600x600.jpg" alt="Ghế nhựa đen">
+        <div class="info">
+          <p><strong>Mã:</strong> SP002</p>
+          <p><strong>Loại:</strong> Ghế</p>
+          <h6>Ghế nhựa đen</h6>
+          <p>Chất liệu nhựa cao cấp, dễ vệ sinh, bền màu.</p>
+          <span class="badge bg-warning text-dark">Tạm ẩn</span>
+        </div>
+        <div class="actions">
+          <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+          <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye-slash"></i></button>
+        </div>
       </div>
-      <div class="actions">
-        <button class="btn-action edit" onclick="openEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
-        <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
+
+      <!-- SP 3 -->
+      <div class="product-card">
+        <img src="Picture/Shop/products-13-600x600.jpg" alt="Kệ sách gỗ">
+        <div class="info">
+          <p><strong>Mã:</strong> SP003</p>
+          <p><strong>Loại:</strong> Kệ</p>
+          <h6>Kệ sách gỗ</h6>
+          <p>Thiết kế đơn giản, nhiều tầng, chịu lực tốt.</p>
+          <span class="badge bg-success">Đang bán</span>
+        </div>
+        <div class="actions">
+          <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+          <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
+        </div>
       </div>
-    </div>
 
     <!-- SP 4 -->
     <div class="product-card">
@@ -110,7 +83,7 @@
         <span class="badge bg-success">Đang bán</span>
       </div>
       <div class="actions">
-        <button class="btn-action edit" onclick="openEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+        <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
       <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
       </div>
     </div>
@@ -126,7 +99,7 @@
         <span class="badge bg-success">Đang bán</span>
       </div>
       <div class="actions">
-        <button class="btn-action edit" onclick="openEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+        <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
         <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
       </div>
     </div>
@@ -142,7 +115,7 @@
         <span class="badge bg-warning text-dark">Tạm ẩn</span>
       </div>
       <div class="actions">
-        <button class="btn-action edit" onclick="openEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+        <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
         <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye-slash"></i></button>
       </div>
     </div>
@@ -158,7 +131,7 @@
         <span class="badge bg-success">Đang bán</span>
       </div>
       <div class="actions">
-        <button class="btn-action edit" onclick="openEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+        <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
        <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
       </div>
     </div>
@@ -174,7 +147,7 @@
         <span class="badge bg-success">Đang bán</span>
       </div>
       <div class="actions">
-        <button class="btn-action edit" onclick="openEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+        <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
        <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
       </div>
     </div>
@@ -190,75 +163,50 @@
         <span class="badge bg-success">Đang bán</span>
       </div>
       <div class="actions">
-        <button class="btn-action edit" onclick="openEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
+        <button class="btn-action edit" onclick="goEdit('suasanpham.html')"><i class="fa fa-pen"></i></button>
        <button class="btn-action delete" onclick="toggleHide(this)"><i class="fa fa-eye"></i></button>
     </div>
       </div>
     </div>
   </div>
 
-  <!-- Khung hover chứa form sửa -->
-  <div id="editPopup">
-    <iframe id="editFrame"></iframe>
-  </div>
-
   <script>
-  
-    function openEdit(url){
-      const popup = document.getElementById('editPopup');
-      const frame = document.getElementById('editFrame');
-      frame.src = url;
-      popup.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+
+    /* 🔥 HÀM MỚI: chuyển sang trang sửa sản phẩm */
+    function goEdit(url) {
+      window.location.href = url;
     }
 
-    function closeEditPopup(){
-      const popup = document.getElementById('editPopup');
-      const frame = document.getElementById('editFrame');
-      popup.style.display = 'none';
-      frame.src = '';
-      document.body.style.overflow = '';
+    /* 🔥 HÀM MỚI: thêm sản phẩm */
+    function goAddProduct() {
+      window.location.href = 'themsanpham.html';
     }
-function toggleHide(btn) {
-  const card = btn.closest(".product-card");
-  const badge = card.querySelector(".badge");
-  const icon = btn.querySelector("i");
 
-  // Nếu đang bán -> chuyển sang Tạm ẩn
-  if (badge.textContent.trim() === "Đang bán") {
+    /* Giữ nguyên hàm ẩn/hiện sản phẩm */
+    function toggleHide(btn) {
+      const card = btn.closest(".product-card");
+      const badge = card.querySelector(".badge");
+      const icon = btn.querySelector("i");
 
-    badge.classList.remove("bg-success");
-    badge.classList.add("bg-warning", "text-dark");
-    badge.textContent = "Tạm ẩn";
+      if (badge.textContent.trim() === "Đang bán") {
 
-    // Icon đổi sang mắt có gạch (ẩn)
-    icon.classList.remove("fa-eye");
-    icon.classList.add("fa-eye-slash");
-  }
+        badge.classList.remove("bg-success");
+        badge.classList.add("bg-warning", "text-dark");
+        badge.textContent = "Tạm ẩn";
 
-  // Nếu đang tạm ẩn -> chuyển về Đang bán
-  else {
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+      }
+      else {
 
-    badge.classList.remove("bg-warning", "text-dark");
-    badge.classList.add("bg-success");
-    badge.textContent = "Đang bán";
+        badge.classList.remove("bg-warning", "text-dark");
+        badge.classList.add("bg-success");
+        badge.textContent = "Đang bán";
 
-    // Icon đổi sang mắt bình thường (hiện)
-    icon.classList.remove("fa-eye-slash");
-    icon.classList.add("fa-eye");
-  }
-}
-
-
-
-  function addProduct() {
-  openEdit('themsanpham.html'); // Mở form thêm sản phẩm giống form sửa
-  }
-window.addEventListener("message", (event) => {
-  if (event.data === "close-popup") {
-    closeEditPopup();
-  }
-});
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+      }
+    }
 
   </script>
 </body>
