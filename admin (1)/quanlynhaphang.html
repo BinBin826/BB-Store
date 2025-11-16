@@ -29,7 +29,10 @@
             <option>Chưa hoàn thành</option>
           </select>
 
-          <button class="btn-filter"><i class="fa fa-filter"></i> Lọc</button>
+         <button class="btn-filter" onclick="filterNotify()">
+  <i class="fa fa-filter"></i> Lọc
+</button>
+
         </div>
 
         <a href="themphieunhap.html" class="btn-add-green">
@@ -221,6 +224,9 @@ function showPage(page) {
       setTimeout(() => p2.classList.add('show'), 10);
     }, 300);
   }
+}
+function filterNotify() {
+  alert("🔎 Đã áp dụng bộ lọc tìm kiếm!");
 }
 </script>
 </body>
