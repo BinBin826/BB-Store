@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="Css/Shop.css">
     <link rel="stylesheet" href="Css/product.css">
      <link rel="stylesheet" href="Css/SEARCHBUTTON.css">
-    <title>Storages</title>
+    <title>Cabinetss</title>
 </head>
 <body>
     <div class="header">
@@ -118,7 +118,7 @@
                     <a href="Lighting.html">
                         <img src="Picture/categories-11.jpg" alt="">
                         <div class="name-product">
-                            <p>Lighting</p>
+                            <p>Lights</p>
                         </div>
                     </a>
                 </div>
@@ -134,7 +134,7 @@
                     <a href="storage.html">
                         <img src="Picture/Shop/categories-10.jpg" alt="">
                         <div class="name-product">
-                            <p>Storage</p>
+                            <p>Cabinets</p>
                         </div>
                     </a>
                 </div>
@@ -165,7 +165,7 @@
                     <div class="box-number">1</div>
                 </div>
                 <div class="in-sidebar">
-                    <div class="name">Lighting</div>
+                    <div class="name">Lights</div>
                     <div class="box-number">1</div>
                 </div>
 
@@ -174,7 +174,7 @@
                     <div class="box-number">1</div>
                 </div>
                 <div class="in-sidebar">
-                    <div class="name">Storage</div>
+                    <div class="name">Cabinets</div>
                     <div class="box-number">1</div>
                 </div>
             </div>
@@ -498,7 +498,14 @@
     });
 </script>
 
-           
+<div class="box-footer-product" style="text-align:center; margin-top:40px;">
+  <div class="pagination">
+    <button class="page-btn active">Trang 1</button>
+    <button class="page-btn">Trang 2</button>
+    <button class="page-btn">Trang 3</button> 
+  </div>
+</div>           
+
         </div>
     </div>
     <!-- Phần footer -->
@@ -528,7 +535,7 @@
                     <div>Desks & office </div>
                 </a>
                 <a href="">
-                    <div>Storage</div>
+                    <div>Cabinets</div>
                 </a>
                 <a href="">
                     <div>Bed & Bath</div>
@@ -610,6 +617,26 @@
             </div>
         </div>
     </div>
+       <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const btns = document.querySelectorAll(".page-btn");
+  const productContainer = document.querySelector(".all-box-new-product");
+
+  btns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      btns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      // Hiệu ứng mờ nhẹ khi đổi trang
+      productContainer.style.opacity = "0";
+      setTimeout(() => {
+        productContainer.style.opacity = "1";
+      }, 300);
+    });
+  });
+});
+</script>
+
 <script>
     // Lấy các phần tử
     const searchIcon = document.querySelector('.search');
