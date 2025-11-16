@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thêm sản phẩm mới</title>
+  <title>Thêm sản phẩm</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -66,7 +66,16 @@
       padding: 7px 10px;
     }
 
-    /* Mô tả to – không thanh cuộn – auto grow */
+    /* KHUNG ẢNH */
+    .product-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid #ddd;
+    }
+
+    /* KHUNG MÔ TẢ TO – KHÔNG THANH CUỘN – TỰ GIÃN */
     .desc-box {
       width: 100%;
       min-height: 260px;
@@ -78,19 +87,97 @@
       border: 1px solid #ccc;
     }
 
-    .product-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 10px;
-      object-fit: cover;
-      border: 1px solid #ddd;
-    }
-
     .bottom-action {
       display: flex;
       justify-content: space-between;
       margin-top: 25px;
     }
+    .img-gallery {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.img-item {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.img-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: white;
+  font-size: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
+/* Ô thêm ảnh */
+.img-add {
+  width: 120px;
+  height: 120px;
+  border: 2px dashed #bbb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.img-add span {
+  font-size: 40px;
+  color: #aaa;
+  line-height: 0;
+}
+
+.img-add:hover {
+  border-color: #ff9b42;
+  color: #ff9b42;
+}
+/* HIỆU ỨNG NÚT X */
+.delete-btn:hover {
+  background: red !important;
+}
+
+/* Ô THÊM ẢNH */
+.add-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plus-sign {
+  font-size: 40px;
+  color: #aaa;
+  line-height: 0.7;
+}
+
+.add-text {
+  font-size: 14px;
+  margin-top: 4px;
+  color: #888;
+}
+
+.img-add:hover .plus-sign,
+.img-add:hover .add-text {
+  color: #ff9b42;
+}
 
   </style>
 
@@ -141,19 +228,43 @@
   </div>
 
   <!-- BLOCK 2 -->
-  <div class="block">
-    <div class="block-title">Hình ảnh sản phẩm</div>
+<div class="block">
+  <div class="block-title">Hình ảnh sản phẩm</div>
 
-    <div class="row-line" style="align-items:center;">
-      <img id="previewImage" src="Picture/categories-11.jpg" class="product-img">
+  <div id="imgGallery" class="img-gallery">
 
-      <div style="flex:1">
-        <label>Đổi hình ảnh</label>
-        <input type="file" id="productImage" accept="image/*" class="form-control-custom"
-               onchange="previewFile(event)">
-      </div>
+    <!-- ẢNH 1 -->
+    <div class="img-item">
+      <img src="Picture/denban1.jpg">
+      <button class="delete-btn" onclick="removeImage(this)">✖</button>
     </div>
+
+    <!-- ẢNH 2 -->
+    <div class="img-item">
+      <img src="Picture/denban2.jpg">
+      <button class="delete-btn" onclick="removeImage(this)">✖</button>
+    </div>
+
+    <!-- ẢNH 3 -->
+    <div class="img-item">
+      <img src="Picture/denban3.jpg">
+      <button class="delete-btn" onclick="removeImage(this)">✖</button>
+    </div>
+
+  <!-- Ô THÊM ẢNH -->
+<div class="img-add" onclick="triggerAddImage()">
+  <div class="add-content">
+    <span class="plus-sign">+</span>
+    <div class="add-text">Thêm ảnh</div>
   </div>
+</div>
+<!-- INPUT ẨN ĐỂ CHỌN FILE -->
+<input type="file" id="hiddenFileInput" accept="image/*" style="display:none" onchange="addNewImage(event)">
+    <!-- INPUT ẨN -->
+    <input type="file" id="addImageInput" accept="image/*" hidden onchange="addNewImage(event)">
+  </div>
+</div>
+
 
   <!-- BLOCK 3 -->
   <div class="block">
@@ -182,6 +293,7 @@ Chất liệu:
 </div>
 
 <script>
+/* XEM TRƯỚC ẢNH */
 function previewFile(event) {
   const reader = new FileReader();
   reader.onload = function() {
@@ -190,23 +302,32 @@ function previewFile(event) {
   reader.readAsDataURL(event.target.files[0]);
 }
 
-/* Auto grow mô tả */
+/* TỰ ĐỘNG GIÃN TEXTAREA */
 const desc = document.getElementById("descBox");
 function autoGrow(elem) {
   elem.style.height = "5px";
-  elem.style.height = elem.scrollHeight + "px";
+  elem.style.height = (elem.scrollHeight) + "px";
 }
 autoGrow(desc);
 desc.addEventListener("input", () => autoGrow(desc));
 
+/* BUTTON */
 function confirmAdd() {
-  alert("✅ Thêm sản phẩm thành công!");
+  alert("✅ Thêm thành công!");
   window.location.href = "quanlydanhmucsp.html";
 }
 
 function cancelAdd() {
   window.location.href = "quanlydanhmucsp.html";
 }
+function removeImage(btn) {
+    alert("🗑️ Đã xóa hình ảnh!");
+}
+// MỞ HỘP CHỌN FILE KHI NHẤN Ô THÊM ẢNH
+function triggerAddImage() {
+  document.getElementById("hiddenFileInput").click();
+}
+
 </script>
 
 </body>
