@@ -164,6 +164,9 @@ html {
     font-size: 14px;
     transition: 0.4s;
 }
+.in-sidebar {
+    text-decoration: none; /* bỏ gạch dưới */
+}
 
 .in-sidebar .box-number {
     text-align: center;
