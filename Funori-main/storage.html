@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="Css/main-moblie.css">
     <link rel="stylesheet" href="Css/Shop.css">
     <link rel="stylesheet" href="Css/product.css">
+     <link rel="stylesheet" href="Css/SEARCHBUTTON.css">
     <title>Storages</title>
 </head>
 <body>
@@ -50,13 +51,33 @@
                 </div>
             </div>
             <div class="box-icon">
+
                 <div class="box-search">
-                    <input type="text" id="search-input" placeholder="Search here...">
-                    <button id="search-btn"></button>
-                </div>
-                <a href="search.html" class="box-search">
                     <i class="fa-solid fa-magnifying-glass search"></i>
-                </a>
+                
+                <div class="filter-box">
+    <input type="text" placeholder="Tìm kiếm sản phẩm..." class="filter-input">
+
+    <select class="filter-select">
+        <option value="">Tất cả loại</option>
+        <option value="ban">Đèn</option>
+        <option value="ghe">Ghế</option>
+        <option value="tu">Tủ</option>
+        <option value="giuong">Sofa</option>
+        <option value="phukien">khác</option>
+    </select>
+
+    <select class="filter-price">
+        <option value="">Tất cả giá</option>
+        <option value="duoi1tr">Dưới 1 triệu</option>
+        <option value="1tr-5tr">1 – 5 triệu</option>
+        <option value="tren5tr">Trên 5 triệu</option>
+    </select>
+
+    <button class="filter-btn">Áp dụng</button>
+</div>
+
+</div>
                 <a href="index.html" class="box-user">
                     <i class="fa-solid fa-power-off user"></i>
                 </a>
@@ -589,6 +610,40 @@
             </div>
         </div>
     </div>
+<script>
+    // Lấy các phần tử
+    const searchIcon = document.querySelector('.search');
+    const filterBox = document.querySelector('.filter-box');
+
+    // Khi click vào icon search, toggle hiển thị filter-box
+    searchIcon.addEventListener('click', () => {
+        if(filterBox.style.display === 'block') {
+            filterBox.style.display = 'none';
+        } else {
+            filterBox.style.display = 'block';
+        }
+    });
+
+    // Ẩn filter-box khi click ra ngoài
+    document.addEventListener('click', (e) => {
+        if(!filterBox.contains(e.target) && !searchIcon.contains(e.target)) {
+            filterBox.style.display = 'none';
+        }
+    });
+
+    // Xử lý nút "Áp dụng"
+    const filterBtn = document.querySelector('.filter-btn');
+    const filterInput = document.querySelector('.filter-input');
+    const filterSelect = document.querySelector('.filter-select');
+
+    filterBtn.addEventListener('click', () => {
+        const searchText = filterInput.value;
+        const filterOption = filterSelect.value;
+        console.log("Tìm kiếm:", searchText, "Lọc theo:", filterOption);
+        // Bạn có thể thêm logic để chuyển sang trang tìm kiếm hoặc lọc sản phẩm
+         window.location.href = `search.html?query=${searchText}&option=${filterOption}`;
+    });
+</script>
 </body>
 </html>
 <script src="https://kit.fontawesome.com/eda05fcf5c.js" crossorigin="anonymous"></script>
