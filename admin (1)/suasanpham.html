@@ -327,6 +327,24 @@ function removeImage(btn) {
 function triggerAddImage() {
   document.getElementById("hiddenFileInput").click();
 }
+/* THÊM ẢNH MỚI + THÔNG BÁO */
+function addNewImage(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function () {
+
+
+    // Thông báo đơn giản
+    alert("📷 Đã thêm hình ảnh thành công!");
+  };
+
+  reader.readAsDataURL(file);
+
+  // Reset input để có thể chọn lại cùng 1 file
+  event.target.value = "";
+}
 </script>
 
 </body>
