@@ -83,6 +83,48 @@
     .btn-back:hover {
       background-color: #ff7b00;
     }
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  user-select: none;
+}
+
+.arrow-icon {
+  font-size: 12px;
+  transition: transform 0.25s ease;
+}
+
+.arrow-icon.rotate {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
+.status-menu {
+  display: none;
+  position: absolute;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  margin-top: 6px;
+  padding: 6px 0;
+  z-index: 999;
+  width: 160px;
+}
+
+.status-menu div {
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.status-menu div:hover {
+  background: #ffe7d1;
+}
 
   </style>
 </head>
@@ -136,15 +178,26 @@
       <p><strong>Khách hàng:</strong> Trần Nhựt Huy</p>
       <p><strong>Ngày đặt:</strong> 12/12/2025</p>
       <p><strong>Số lượng sản phẩm:</strong> 2</p>
-      <p><strong>Trạng thái:</strong>
-  <select id="orderStatus" class="status-select" onchange="updateStatus(this)">
-    <option value="Mới đặt" data-color="warning" selected>Mới đặt</option>
-    <option value="Đang xử lý" data-color="info">Đang xử lý</option>
-    <option value="Đang giao" data-color="primary">Đang giao</option>
-    <option value="Đã giao" data-color="success">Đã giao</option>
-    <option value="Đã hủy" data-color="danger">Đã hủy</option>
-  </select>
+     <p><strong>Trạng thái:</strong>
+
+ <span id="statusBadge" class="badge bg-success badge-status status-badge"
+        onclick="toggleStatusMenu()">
+    Đã giao
+    <span id="arrowIcon" class="arrow-icon">&#9662;</span>
+</span>
+
+
+
+  <div id="statusMenu" class="status-menu">
+  <div onclick="changeStatus('Đang xử lý','warning text-dark')">Đang xử lý</div>
+  <div onclick="changeStatus('Đang giao','info text-dark')">Đang giao</div>
+  <div onclick="changeStatus('Đã giao','success')">Đã giao</div>
+  <div onclick="changeStatus('Đã hủy','danger')">Đã hủy</div>
+</div>
+
+
 </p>
+
 
       <p><strong>Tổng tiền:</strong> <span class="text-danger fw-semibold">425.000đ</span></p>
     </div>
@@ -163,6 +216,61 @@
     </div>
 
   </div>
+<script>
+function toggleStatusMenu() {
+  const menu = document.getElementById("statusMenu");
+  const arrow = document.getElementById("arrowIcon");
+
+  const open = menu.style.display === "block";
+  menu.style.display = open ? "none" : "block";
+  arrow.classList.toggle("rotate", !open);
+}
+
+function changeStatus(text, colorClass) {
+  const badge = document.getElementById("statusBadge");
+  const arrow = document.getElementById("arrowIcon");
+
+  // Reset class
+  badge.className = "badge badge-status status-badge";
+
+  // Set màu theo bootstrap
+  badge.classList.add("bg-" + colorClass.split(" ")[0]);
+
+  // text-dark nếu cần
+  if (colorClass.includes("text-dark"))
+    badge.classList.add("text-dark");
+  else
+    badge.classList.remove("text-dark");
+
+  // đổi chữ
+  badge.childNodes[0].textContent = text + " ";
+
+  // Đóng dropdown
+  document.getElementById("statusMenu").style.display = "none";
+  arrow.classList.remove("rotate");
+
+}
+
+function showToast(msg) {
+  const t = document.createElement("div");
+  t.textContent = msg;
+  t.style.position = "fixed";
+  t.style.bottom = "25px";
+  t.style.right = "25px";
+  t.style.background = "#333";
+  t.style.color = "white";
+  t.style.padding = "10px 18px";
+  t.style.borderRadius = "8px";
+  t.style.opacity = "0";
+  t.style.transition = "0.4s";
+  t.style.zIndex = "9999";
+
+  document.body.appendChild(t);
+  setTimeout(() => t.style.opacity = "1", 10);
+  setTimeout(() => t.style.opacity = "0", 1800);
+  setTimeout(() => t.remove(), 2200);
+}
+</script>
 
 </body>
 </html>
