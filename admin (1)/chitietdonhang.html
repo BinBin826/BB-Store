@@ -136,7 +136,16 @@
       <p><strong>Khách hàng:</strong> Trần Nhựt Huy</p>
       <p><strong>Ngày đặt:</strong> 12/12/2025</p>
       <p><strong>Số lượng sản phẩm:</strong> 2</p>
-      <p><strong>Trạng thái:</strong> <span class="badge bg-warning text-dark badge-status">Mới đặt</span></p>
+      <p><strong>Trạng thái:</strong>
+  <select id="orderStatus" class="status-select" onchange="updateStatus(this)">
+    <option value="Mới đặt" data-color="warning" selected>Mới đặt</option>
+    <option value="Đang xử lý" data-color="info">Đang xử lý</option>
+    <option value="Đang giao" data-color="primary">Đang giao</option>
+    <option value="Đã giao" data-color="success">Đã giao</option>
+    <option value="Đã hủy" data-color="danger">Đã hủy</option>
+  </select>
+</p>
+
       <p><strong>Tổng tiền:</strong> <span class="text-danger fw-semibold">425.000đ</span></p>
     </div>
 
