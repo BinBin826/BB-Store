@@ -42,7 +42,36 @@
     .save-btn:hover { background: #56c273; }
 
     input.form-control { text-align: center; font-size: 14px; }
+    .btn-save {
+  background: #78e08f;        /* màu xanh dương */
+  color: #fff;
+  padding: 10px 18px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.btn-save:hover {
+  background: #78e08f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.22);
+}
+
+.btn-save:active {
+  transform: scale(0.96);
+}
+
+.btn-save:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
   </style>
+  
 </head>
 
 <body>
@@ -134,6 +163,7 @@
     </tbody>
   </table>
 </div>
+<button class="btn-save" onclick="confirmSave()">Lưu</button>
 
   <script>
     function showTab(tab, e) {
