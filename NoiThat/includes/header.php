@@ -72,7 +72,7 @@ $cur_path   = $_SERVER['REQUEST_URI'];
 
         .user-dropdown a:hover {
             background-color: #f8f9fa;
-            color: #006b6b; /* Màu chủ đạo của bạn */
+            color: #7b5b17ff; /* Màu chủ đạo của bạn */
             padding-left: 25px;
         }
 
