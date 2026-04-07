@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $conn->query("INSERT INTO san_pham (ma_loai,ten_sp,mo_ta,don_vi_tinh,hinh,tl_loi_nhuan,trang_thai) VALUES ($loai,'$t','$m','$d','$h',$tl,$tt)");
         $new_id = $conn->insert_id;
-        $conn->query("INSERT INTO ton_kho (ma_sp,so_luong,gia_von) VALUES ($new_id,$sl_bd,$gia_bd)");
+        $conn->query("INSERT INTO ton_kho (ma_sp,so_luong,gia_von) VALUES ($new_id,0,0)");
         $conn->query("INSERT INTO gia_ban (ma_sp,tl_loi_nhuan) VALUES ($new_id,$tl)");
         
         setFlash('success','Thêm sản phẩm thành công!');
@@ -109,9 +109,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             setFlash('warning','Đã ẩn sản phẩm (có lịch sử nhập hàng).');
         } else {
             if ($sp['hinh'] && file_exists(UPLOAD_PATH . $sp['hinh'])) @unlink(UPLOAD_PATH . $sp['hinh']);
-            $conn->query("DELETE FROM ton_kho WHERE ma_sp=$id");
-            $conn->query("DELETE FROM gia_ban WHERE ma_sp=$id");
-            $conn->query("DELETE FROM san_pham WHERE ma_sp=$id");
+$conn->query("DELETE FROM gio_hang WHERE ma_sp=$id");
+$conn->query("DELETE FROM ton_kho WHERE ma_sp=$id");
+$conn->query("DELETE FROM gia_ban WHERE ma_sp=$id");
+$conn->query("DELETE FROM san_pham WHERE ma_sp=$id");
             setFlash('success','Đã xóa sản phẩm!');
         }
         redirect(SITE_URL . '/admin/products.php');
@@ -190,16 +191,7 @@ $loai_list = $conn->query("SELECT * FROM loai_sp ORDER BY ten_loai");
                         <input type="checkbox" name="trang_thai" value="1" <?= (!$edit || $edit['trang_thai'])?'checked':'' ?>> Đang bán
                     </label>
                 </div>
-                <?php if (!$edit): ?>
-                <div class="form-group">
-                    <label class="form-label">Số lượng ban đầu</label>
-                    <input type="number" name="so_luong_ban_dau" class="form-control" value="0">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Giá nhập ban đầu (₫)</label>
-                    <input type="number" name="gia_ban_dau" class="form-control" value="0">
-                </div>
-                <?php endif; ?>
+               
                 <div class="form-group full">
                     <label class="form-label">Mô tả sản phẩm</label>
                     <textarea name="mo_ta" class="form-control" rows="3"><?= htmlspecialchars($edit['mo_ta'] ?? '') ?></textarea>

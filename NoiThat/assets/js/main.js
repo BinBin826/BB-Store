@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
         advBtn.addEventListener('click', () => {
             const open = advArea.style.display !== 'none';
             advArea.style.display = open ? 'none' : 'flex';
-            advBtn.textContent = open ? '+ Tìm nâng cao' : '− Tìm nâng cao';
+            advBtn.textContent = open ? '+ Tìm nâng cao' : '− Thu gọn';
         });
     }
 
@@ -104,6 +104,13 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.confirm-delete').forEach(el => {
         el.addEventListener('click', function (e) {
             if (!confirm('Bạn có chắc chắn muốn xóa?')) e.preventDefault();
+        });
+    });
+
+    // ---- Complete confirm ----
+    document.querySelectorAll('.confirm-complete').forEach(el => {
+        el.addEventListener('click', function (e) {
+            if (!confirm('Bạn có chắc chắn muốn hoàn thành & cập nhật kho?')) e.preventDefault();
         });
     });
 });

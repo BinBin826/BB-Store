@@ -67,11 +67,11 @@ $loai_list_all = $conn->query("SELECT * FROM loai_sp WHERE trang_thai=1 ORDER BY
 
 // Tạo link phân trang
 $url_params = http_build_query(array_filter([
-    'q' => $keyword, 
-    'loai' => $loai, 
-    'gia_min' => $gia_min, 
-    'gia_max' => $gia_max, 
-    'advanced' => $advanced ? 1 : 0
+    'q'        => $keyword,
+    'loai'     => $loai ?: null,
+    'gia_min'  => $gia_min ?: null,
+    'gia_max'  => $gia_max ?: null,
+    'advanced' => $advanced ? 1 : null,
 ]));
 $url_pattern = SITE_URL . '/search.php?' . $url_params . '&page=%d';
 
@@ -196,14 +196,6 @@ include __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<script>
-// Script bổ sung để Toggle phần tìm kiếm nâng cao
-document.getElementById('advancedToggle')?.addEventListener('click', function() {
-    const fields = document.getElementById('advancedFields');
-    const isHidden = fields.style.display === 'none';
-    fields.style.display = isHidden ? 'flex' : 'none';
-    this.innerText = isHidden ? '− Thu gọn' : '+ Tìm nâng cao';
-});
-</script>
+
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded',function(){
             if(!confirm('Bạn có chắc muốn xóa?')) e.preventDefault();
         });
     });
+    // Confirm complete
+    document.querySelectorAll('.confirm-complete').forEach(el=>{
+        el.addEventListener('click',function(e){
+            if(!confirm('Bạn có chắc chắn muốn cập nhật kho?')) e.preventDefault();
+        });
+    });
     // Image preview
     const fileInputs = document.querySelectorAll('input[type=file][data-preview]');
     fileInputs.forEach(inp=>{

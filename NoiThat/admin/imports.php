@@ -237,7 +237,7 @@ $sp_list = $conn->query("SELECT sp.ma_sp, sp.ten_sp, ls.ten_loai, tk.so_luong FR
             <form method="POST">
                 <input type="hidden" name="action" value="complete">
                 <input type="hidden" name="ma_phieu" value="<?= $edit_phieu['ma_phieu'] ?>">
-                <button type="submit" class="btn btn-success confirm-delete" style="color: #ffffff;">✓ Hoàn Thành & Cập Nhật Kho</button>
+                <button type="submit" class="btn btn-success confirm-complete" style="color: #ffffff;">✓ Hoàn Thành & Cập Nhật Kho</button>
             </form>
             <form method="POST">
                 <input type="hidden" name="action" value="delete_phieu">
