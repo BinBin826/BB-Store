@@ -63,21 +63,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $qh = $conn->real_escape_string($quan);
             $tp = $conn->real_escape_string($tinh);
 
-            $conn->query("INSERT INTO don_hang (ma_kh,ho_ten_giao,dien_thoai_giao,dia_chi_giao,phuong_xa,quan_huyen,tinh_tp,hinh_thuc_tt,tong_tien)
-                VALUES ($kh_id,'$htn','$dt','$dc','$px','$qh','$tp','$ht',$tong)");
+            $conn->query("INSERT INTO don_hang 
+                (ma_kh, ho_ten_giao, dien_thoai_giao, dia_chi_giao, phuong_xa, quan_huyen, tinh_tp, 
+                 hinh_thuc_tt, tong_tien, trang_thai) 
+                VALUES 
+                ($kh_id, '$htn', '$dt', '$dc', '$px', '$qh', '$tp', '$ht', $tong, 'moi_dat')");
+
             $ma_dh = $conn->insert_id;
 
             foreach ($cart_items as $item) {
                 $ten = $conn->real_escape_string($item['ten_sp']);
-                $conn->query("INSERT INTO chitiet_dh (ma_dh,ma_sp,ten_sp,so_luong,gia_ban)
-                    VALUES ($ma_dh,{$item['ma_sp']},'$ten',{$item['so_luong']},{$item['gia_ban']})");
-                // Trừ tồn kho
-                $conn->query("UPDATE ton_kho SET so_luong=so_luong-{$item['so_luong']} WHERE ma_sp={$item['ma_sp']}");
+                $conn->query("INSERT INTO chitiet_dh 
+                    (ma_dh, ma_sp, ten_sp, so_luong, gia_ban) 
+                    VALUES 
+                    ($ma_dh, {$item['ma_sp']}, '$ten', {$item['so_luong']}, {$item['gia_ban']})");
+                
+                // === ĐÃ XÓA PHẦN TRỪ TỒN KHO ===
             }
+
             // Xóa giỏ hàng
             $conn->query("DELETE FROM gio_hang WHERE ma_kh=$kh_id");
+            
             $conn->commit();
             redirect(SITE_URL . '/order-success.php?id=' . $ma_dh);
+
         } catch (Exception $e) {
             $conn->rollback();
             $errors[] = 'Có lỗi xảy ra. Vui lòng thử lại.';

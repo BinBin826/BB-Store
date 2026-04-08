@@ -2,21 +2,60 @@
 $page_title = 'Quản Lý Đơn Hàng';
 require_once __DIR__ . '/includes/header.php';
 
-// Update status
+// ====================== CẬP NHẬT TRẠNG THÁI ĐƠN HÀNG ======================
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ma_dh = (int)$_POST['ma_dh'];
     $tt    = $conn->real_escape_string($_POST['trang_thai'] ?? '');
     $allowed = ['moi_dat','da_xac_nhan','da_giao','da_huy'];
+
     if (in_array($tt, $allowed)) {
-        $conn->query("UPDATE don_hang SET trang_thai='$tt' WHERE ma_dh=$ma_dh");
-        // Nếu hủy -> hoàn tồn kho
-        if ($tt === 'da_huy') {
-            $items = $conn->query("SELECT * FROM chitiet_dh WHERE ma_dh=$ma_dh");
-            while ($it = $items->fetch_assoc()) {
-                $conn->query("UPDATE ton_kho SET so_luong=so_luong+{$it['so_luong']} WHERE ma_sp={$it['ma_sp']}");
+        
+        $conn->begin_transaction();
+        try {
+            // Lấy thông tin trạng thái cũ
+            $old = $conn->query("SELECT trang_thai, da_tru_kho FROM don_hang WHERE ma_dh=$ma_dh");
+            $old_row = $old->fetch_assoc();
+            $old_status = $old_row['trang_thai'] ?? '';
+            $da_tru_kho = (int)($old_row['da_tru_kho'] ?? 0);
+
+            // Cập nhật trạng thái mới
+            $conn->query("UPDATE don_hang SET trang_thai='$tt' WHERE ma_dh=$ma_dh");
+
+            // ==================== XỬ LÝ TỒN KHO ====================
+            
+            if ($tt === 'da_giao' && $da_tru_kho == 0) {
+                // Trừ tồn kho khi chuyển sang "Đã giao"
+                $items = $conn->query("SELECT ma_sp, so_luong FROM chitiet_dh WHERE ma_dh=$ma_dh");
+                while ($it = $items->fetch_assoc()) {
+                    $ma_sp = (int)$it['ma_sp'];
+                    $sl    = (int)$it['so_luong'];
+                    $conn->query("UPDATE ton_kho 
+                                  SET so_luong = GREATEST(0, so_luong - $sl) 
+                                  WHERE ma_sp = $ma_sp");
+                }
+                $conn->query("UPDATE don_hang SET da_tru_kho = 1 WHERE ma_dh=$ma_dh");
+                
+            } 
+            elseif ($tt === 'da_huy' && $da_tru_kho == 1) {
+                // Hoàn trả tồn kho khi hủy đơn
+                $items = $conn->query("SELECT ma_sp, so_luong FROM chitiet_dh WHERE ma_dh=$ma_dh");
+                while ($it = $items->fetch_assoc()) {
+                    $ma_sp = (int)$it['ma_sp'];
+                    $sl    = (int)$it['so_luong'];
+                    $conn->query("UPDATE ton_kho 
+                                  SET so_luong = so_luong + $sl 
+                                  WHERE ma_sp = $ma_sp");
+                }
+                $conn->query("UPDATE don_hang SET da_tru_kho = 0 WHERE ma_dh=$ma_dh");
             }
+
+            $conn->commit();
+            setFlash('success','Cập nhật trạng thái đơn hàng thành công!');
+            
+        } catch(Exception $e) {
+            $conn->rollback();
+            setFlash('error','Lỗi khi cập nhật: ' . $e->getMessage());
         }
-        setFlash('success','Cập nhật trạng thái đơn hàng thành công!');
     }
     redirect(SITE_URL . '/admin/orders.php' . (isset($_POST['view_back']) ? '?view='.$ma_dh : ''));
 }
